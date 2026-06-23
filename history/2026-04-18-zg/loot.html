@@ -1,0 +1,435 @@
+<html>
+<head>
+<script>
+const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};</script>
+<script src="https://wow.zamimg.com/js/tooltips.js">
+</script>
+<style>
+
+table, th, td {
+    //border: 1px solid black;
+}
+
+th, td {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+</style>
+<style>
+
+/* minimal popup that follows cursor */
+.cursor-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;   /* lets you click through */
+    z-index: 9999;
+    background: #ffffff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: monospace;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: opacity 0.12s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.cursor-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.roll {
+    color: #ffff00
+}
+</style>
+<script>
+
+function update_position() {
+    const offsetX = 18;
+    const offsetY = 20;
+
+    var e = window.event || event;
+    var popup = e.target || e.srcElement;
+    popup = popup.children[1];
+
+    if (!popup) {
+        return;
+    }
+
+    // make popup visible on first movement
+    popup.classList.add('active');
+
+    let left = e.clientX + offsetX;
+    let top = e.clientY + offsetY;
+
+    // keep popup inside window edges
+    const popupRect = popup.getBoundingClientRect();
+    const width = popup.offsetWidth;
+    const height = popup.offsetHeight;
+
+    if (left + width > window.innerWidth - 8) {
+        left = window.innerWidth - width - 8;
+    }
+    if (left < 8) left = 8;
+    if (top + height > window.innerHeight - 8) {
+        top = window.innerHeight - height - 8;
+    }
+    if (top < 8) top = 8;
+
+    popup.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+}
+function hide_popup() {
+    var e = window.event || event;
+    var popup = e.target || e.srcElement;
+    popup = popup.children[1];
+
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.remove('active');
+}
+</script>
+</head>
+<body>
+<h3>
+Добыча Зул'Гуруб 2026-04-18 <a href="../index.html">Назад</a></h3>
+<table>
+<tbody>
+<tr>
+<td style="text-align: right;">
+1</td>
+<td>
+20:41:12</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19719" data-wowhead="item=19719&domain=ru.classic">Ремень Изначальных Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+2</td>
+<td>
+20:41:44</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19920" data-wowhead="item=19920&domain=ru.classic">Кольцо Предводителя</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Акнология</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+3</td>
+<td>
+20:42:01</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=22715" data-wowhead="item=22715&domain=ru.classic">Перчатки Страдающих</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Маджестик</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+4</td>
+<td>
+20:47:48</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19907" data-wowhead="item=19907&domain=ru.classic">Плащ из зулианской тигриной шкуры</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+5</td>
+<td>
+20:48:25</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19717" data-wowhead="item=19717&domain=ru.classic">Изначальные обручья Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+6</td>
+<td>
+20:58:38</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19930" data-wowhead="item=19930&domain=ru.classic">Глаз Мар'ли</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Айсшторм</span> (оффпек)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+7</td>
+<td>
+20:58:55</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=22712" data-wowhead="item=22712&domain=ru.classic">Мощь племени</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Настелла</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+8</td>
+<td>
+20:59:20</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19717" data-wowhead="item=19717&domain=ru.classic">Изначальные обручья Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Бледнолик</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+9</td>
+<td>
+21:13:23</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19723" data-wowhead="item=19723&domain=ru.classic">Изначальная рубашка Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Бледнолик</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+10</td>
+<td>
+21:13:27</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19723" data-wowhead="item=19723&domain=ru.classic">Изначальная рубашка Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Бледнолик</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+11</td>
+<td>
+21:16:06</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19893" data-wowhead="item=19893&domain=ru.classic">Печать Занзила</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Сагя</span> (резерв)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+12</td>
+<td>
+21:16:11</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19893" data-wowhead="item=19893&domain=ru.classic">Печать Занзила</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Сагя</span> (резерв)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+13</td>
+<td>
+21:37:52</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20266" data-wowhead="item=20266&domain=ru.classic">Поножи Мирохранителя</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Мэтью</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+14</td>
+<td>
+21:38:10</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=22722" data-wowhead="item=22722&domain=ru.classic">Печать берсерка из племени Гурубаши</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+15</td>
+<td>
+21:38:26</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19716" data-wowhead="item=19716&domain=ru.classic">Изначальные наручники Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Мэтью</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+16</td>
+<td>
+21:46:26</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=22722" data-wowhead="item=22722&domain=ru.classic">Печать берсерка из племени Гурубаши</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Настелла</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+17</td>
+<td>
+21:47:28</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19910" data-wowhead="item=19910&domain=ru.classic">Когти Арлокк</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+18</td>
+<td>
+22:01:17</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19892" data-wowhead="item=19892&domain=ru.classic">Сапоги анимиста</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Палычпал</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+19</td>
+<td>
+22:01:38</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19723" data-wowhead="item=19723&domain=ru.classic">Изначальная рубашка Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Айсшторм</span> (оффпек)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+20</td>
+<td>
+22:02:24</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=22637" data-wowhead="item=22637&domain=ru.classic">Изначальный идол Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Сагя</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+21</td>
+<td>
+22:04:53</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19819" data-wowhead="item=19819&domain=ru.classic">Исколотая кукла вуду</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Гринда</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+22</td>
+<td>
+22:05:01</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19819" data-wowhead="item=19819&domain=ru.classic">Исколотая кукла вуду</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Гринда</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+23</td>
+<td>
+22:05:33</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19818" data-wowhead="item=19818&domain=ru.classic">Исколотая кукла вуду</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Сагя</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+24</td>
+<td>
+22:05:36</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19818" data-wowhead="item=19818&domain=ru.classic">Исколотая кукла вуду</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Сагя</span></div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+25</td>
+<td>
+22:24:26</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19857" data-wowhead="item=19857&domain=ru.classic">Плащ увядания</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Пендольфф</span> (резерв)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+26</td>
+<td>
+22:25:31</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19865" data-wowhead="item=19865&domain=ru.classic">Боевой клинок Хаккари</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span> (резерв)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+27</td>
+<td>
+22:26:17</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19802" data-wowhead="item=19802&domain=ru.classic">Сердце Хаккара</a></td>
+<td onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
