@@ -46,6 +46,8 @@ th, td {
     opacity: 1;
     visibility: visible;
 }
+</style>
+<style>
 
 .roll {
     color: #ffff00
@@ -59,11 +61,27 @@ function find_popup() {
         return [null,null];
     }
     var popup = e.target || e.srcElement;
-    popup = popup.children[1];
+    //popup = popup.children[1];
+
+    if (popup && popup.children) {
+        for (var i = 0; i < popup.children.length; i++) {
+          if (popup.children[i].classList.contains("cursor-popup")) {
+            popup = popup.children[i];
+            break;
+          }
+        }
+    }
 
     if (!popup) {
         popup = e.currentTarget;
-        popup = popup.children[1];
+        if (popup && popup.children) {
+            for (var i = 0; i < popup.children.length; i++) {
+              if (popup.children[i].classList.contains("cursor-popup")) {
+                popup = popup.children[i];
+                break;
+              }
+            }
+        }
         if (!popup) {
             return [null,null];
         }

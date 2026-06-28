@@ -17,14 +17,135 @@ th, td {
 const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};</script>
 <script src="https://wow.zamimg.com/js/tooltips.js">
 </script>
+<style>
+
+/* minimal popup that follows cursor */
+.cursor-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;   /* lets you click through */
+    z-index: 9999;
+    background: #ffffff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: monospace;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: opacity 0.12s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.cursor-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+</style>
+<script>
+
+function find_popup() {
+    var e = window.event || event;
+    if (!e) {
+        return [null,null];
+    }
+    var popup = e.target || e.srcElement;
+    //popup = popup.children[1];
+
+    if (popup && popup.children) {
+        for (var i = 0; i < popup.children.length; i++) {
+          if (popup.children[i].classList.contains("cursor-popup")) {
+            popup = popup.children[i];
+            break;
+          }
+        }
+    }
+
+    if (!popup) {
+        popup = e.currentTarget;
+        if (popup && popup.children) {
+            for (var i = 0; i < popup.children.length; i++) {
+              if (popup.children[i].classList.contains("cursor-popup")) {
+                popup = popup.children[i];
+                break;
+              }
+            }
+        }
+        if (!popup) {
+            return [null,null];
+        }
+    }
+    return [e,popup];
+}
+function update_position() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    update_position1(e, popup);
+
+    // make popup visible on first movement
+    popup.classList.add('active');
+}
+function update_position1(e, popup) {
+    const offsetX = 18;
+    const offsetY = 20;
+
+    let left = e.clientX + offsetX;
+    let top = e.clientY + offsetY;
+
+    // keep popup inside window edges
+    const popupRect = popup.getBoundingClientRect();
+    const width = popup.offsetWidth;
+    const height = popup.offsetHeight;
+
+    if (left + width > window.innerWidth - 8) {
+        left = window.innerWidth - width - 8;
+    }
+    if (left < 8) left = 8;
+    if (top + height > window.innerHeight - 8) {
+        top = window.innerHeight - height - 8;
+    }
+    if (top < 8) top = 8;
+
+    popup.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+}
+function hide_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.remove('active');
+}
+function toggle_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    if (popup.classList.contains('active')) {
+        popup.classList.remove('active');
+    } else {
+        update_position1(e, popup);
+        popup.classList.add('active');
+    }
+}
+</script>
 </head>
 <body>
 <h3>
-<a href="index.html">История рейдов</a> - <a href="loot.html">История добычи</a> - <a href="points.html">Очки резерва</a> - <a href="rules.html">Правила</a> - <a href="addons.html">Аддоны (Модификации)</a> - <a href="macros.html">Макросы</a> - Классы </h3>
+<a href="index.html">История рейдов</a> - <a href="loot.html">История добычи</a> - <a href="points.html">Очки резерва</a> - <a href="bank.html">Банк</a> - <a href="rules.html">Правила</a> - <a href="addons.html">Аддоны (Модификации)</a> - <a href="macros.html">Макросы</a> - Классы </h3>
 <div>
 Полезные заметки о классах в рейде.</div>
 <h4>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="68.html">Жрец</a></span></h4>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; ">Жрец</span></h4>
 <div>
 Для рейда всегда более полезен Жрец в специализации Послушание из-за <a href="https://www.wowhead.com/classic/ru/spell=10060" data-wowhead="spell=10060&domain=ru.classic">Придание сил</a>.</div>
 <br />
@@ -61,5 +182,9 @@ const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};</s
 /cast Taunt
 /cast Widow's Embrace
 </div>
+<h4>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Паладин</span></h4>
+<div>
+Рекомендуемые таланты в специализации Свет: <a href="https://www.wowhead.com/classic/talent-calc/paladin/05503120521351-503201-502">ссылка</a></div>
 </body>
 </html>

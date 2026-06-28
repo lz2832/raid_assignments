@@ -17,45 +17,253 @@ th, td {
 const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</script>
 <script src="https://wow.zamimg.com/js/tooltips.js">
 </script>
+<style>
+
+/* minimal popup that follows cursor */
+.cursor-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;   /* lets you click through */
+    z-index: 9999;
+    background: #ffffff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: monospace;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: opacity 0.12s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.cursor-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+</style>
+<script>
+
+function find_popup() {
+    var e = window.event || event;
+    if (!e) {
+        return [null,null];
+    }
+    var popup = e.target || e.srcElement;
+    //popup = popup.children[1];
+
+    if (popup && popup.children) {
+        for (var i = 0; i < popup.children.length; i++) {
+          if (popup.children[i].classList.contains("cursor-popup")) {
+            popup = popup.children[i];
+            break;
+          }
+        }
+    }
+
+    if (!popup) {
+        popup = e.currentTarget;
+        if (popup && popup.children) {
+            for (var i = 0; i < popup.children.length; i++) {
+              if (popup.children[i].classList.contains("cursor-popup")) {
+                popup = popup.children[i];
+                break;
+              }
+            }
+        }
+        if (!popup) {
+            return [null,null];
+        }
+    }
+    return [e,popup];
+}
+function update_position() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    update_position1(e, popup);
+
+    // make popup visible on first movement
+    popup.classList.add('active');
+}
+function update_position1(e, popup) {
+    const offsetX = 18;
+    const offsetY = 20;
+
+    let left = e.clientX + offsetX;
+    let top = e.clientY + offsetY;
+
+    // keep popup inside window edges
+    const popupRect = popup.getBoundingClientRect();
+    const width = popup.offsetWidth;
+    const height = popup.offsetHeight;
+
+    if (left + width > window.innerWidth - 8) {
+        left = window.innerWidth - width - 8;
+    }
+    if (left < 8) left = 8;
+    if (top + height > window.innerHeight - 8) {
+        top = window.innerHeight - height - 8;
+    }
+    if (top < 8) top = 8;
+
+    popup.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+}
+function hide_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.remove('active');
+}
+function toggle_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    if (popup.classList.contains('active')) {
+        popup.classList.remove('active');
+    } else {
+        update_position1(e, popup);
+        popup.classList.add('active');
+    }
+}
+</script>
 </head>
 <body>
 <h3>
-<a href="index.html">История рейдов</a> - <a href="loot.html">История добычи</a> - Очки резерва - <a href="rules.html">Правила</a> - <a href="addons.html">Аддоны (Модификации)</a> - <a href="macros.html">Макросы</a> - <a href="classes.html">Классы</a> </h3>
+<a href="index.html">История рейдов</a> - <a href="loot.html">История добычи</a> - Очки резерва - <a href="bank.html">Банк</a> - <a href="rules.html">Правила</a> - <a href="addons.html">Аддоны (Модификации)</a> - <a href="macros.html">Макросы</a> - <a href="classes.html">Классы</a> </h3>
 <h3>
 Огненные Недра - <a href="points_bwl.html">Логово Крыла Тьмы</a> </h3>
+<div>
+Обновлено: 2026-06-28 20:54</div>
+<br />
 <table>
 <tbody>
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/spell_ice_lament.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18564" data-wowhead="item=18564&domain=ru.classic">Наручники Ветроносца</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="1.html">Ультимас</a></span> 200</td>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="2.html">Ондрий</a></span> 20</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ультимас</span>
+<span>
+200</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ондрий</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="3.html">Эскханор</a></span> 160</td>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="4.html">Лабрис</a></span> 10</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Эскханор</span>
+<span>
+160</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Лабрис</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="5.html">Луибоб</a></span> 100</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Луибоб</span>
+<span>
+100</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="6.html">Фёст</a></span> 60</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фёст</span>
+<span>
+60</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="7.html">Роршах</a></span> 50</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Роршах</span>
+<span>
+50</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -64,32 +272,104 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_stonetablet_11.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18820" data-wowhead="item=18820&domain=ru.classic">Талисман эфемерной власти</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="8.html">Мириам</a></span> 20</td>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="9.html">Фрмаг</a></span> 10</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Мириам</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фрмаг</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="10.html">Идрисс</a></span> 10</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="11.html">Митриастр</a></span> 10</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Митриастр</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="12.html">Сагя</a></span> 10</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сагя</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="13.html">Сталиум</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сталиум</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -98,30 +378,90 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_15.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17063" data-wowhead="item=17063&domain=ru.classic">Кольцо Аккурии</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="14.html">Илнос</a></span> 20</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Илнос</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="15.html">Маджестик</a></span> 20</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="16.html">Голод</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Голод</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="17.html">Дары</a></span> 10</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дары</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="6.html">Фёст</a></span> 10</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фёст</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -130,30 +470,90 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_39.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=19140" data-wowhead="item=19140&domain=ru.classic">Кольцо Бессердечности</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="18.html">Перун</a></span> 50</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Перун</span>
+<span>
+50</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="13.html">Сталиум</a></span> 30</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сталиум</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="10.html">Идрисс</a></span> 20</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="19.html">Песньлуны</a></span> 20</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Песньлуны</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="20.html">Легистика</a></span> 10</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Легистика</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -162,30 +562,90 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_07.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18821" data-wowhead="item=18821&domain=ru.classic">Кольцо быстрого удара</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="21.html">Шандрисса</a></span> 80</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Шандрисса</span>
+<span>
+80</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="22.html">Эльфинита</a></span> 60</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Эльфинита</span>
+<span>
+60</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="23.html">Анихилятор</a></span> 20</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Анихилятор</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="6.html">Фёст</a></span> 20</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фёст</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="24.html">Ардоберт</a></span> 10</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ардоберт</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -194,30 +654,90 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_shoulder_18.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18810" data-wowhead="item=18810&domain=ru.classic">Наплеч буйного роста</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="20.html">Легистика</a></span> 90</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Легистика</span>
+<span>
+90</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="19.html">Песньлуны</a></span> 20</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Песньлуны</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="25.html">Ракель</a></span> 20</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ракель</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="10.html">Идрисс</a></span> 10</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="18.html">Перун</a></span> 10</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Перун</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -226,26 +746,74 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_weapon_bow_08.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17069" data-wowhead="item=17069&domain=ru.classic">Знак нападающего</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="17.html">Дары</a></span> 30</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дары</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="26.html">Чоко</a></span> 20</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чоко</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="27.html">Дэпээсишка</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дэпээсишка</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="15.html">Маджестик</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -256,26 +824,74 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_amulet_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18814" data-wowhead="item=18814&domain=ru.classic">Колье Повелителя Огня</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="8.html">Мириам</a></span> 60</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Мириам</span>
+<span>
+60</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="12.html">Сагя</a></span> 40</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сагя</span>
+<span>
+40</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="28.html">Элаха</a></span> 30</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элаха</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="11.html">Митриастр</a></span> 10</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Митриастр</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -286,26 +902,74 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_38.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=19147" data-wowhead="item=19147&domain=ru.classic">Кольцо Силы заклинаний</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="28.html">Элаха</a></span> 20</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элаха</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="10.html">Идрисс</a></span> 10</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="29.html">Инисса</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="30.html">Элара</a></span> 10</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -316,26 +980,74 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_staff_13.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18842" data-wowhead="item=18842&domain=ru.classic">Посох господства</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="30.html">Элара</a></span> 40</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
+<span>
+40</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="12.html">Сагя</a></span> 20</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сагя</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="31.html">Розенбаум</a></span> 10</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="32.html">Хилхелп</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -346,26 +1058,74 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_belt_29.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=19137" data-wowhead="item=19137&domain=ru.classic">Ремень Нападения</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="33.html">Всемписс</a></span> 40</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Всемписс</span>
+<span>
+40</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="34.html">Чарджа</a></span> 30</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чарджа</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="23.html">Анихилятор</a></span> 20</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Анихилятор</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="6.html">Фёст</a></span> 10</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фёст</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -376,22 +1136,58 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_sword_15.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18832" data-wowhead="item=18832&domain=ru.classic">Клинок жестокости</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="35.html">Ротара</a></span> 80</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ротара</span>
+<span>
+80</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="34.html">Чарджа</a></span> 60</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чарджа</span>
+<span>
+60</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="26.html">Чоко</a></span> 40</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чоко</span>
+<span>
+40</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -404,22 +1200,58 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_chest_cloth_18.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=19145" data-wowhead="item=19145&domain=ru.classic">Одеяние Неустойчивой силы</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="32.html">Хилхелп</a></span> 20</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="31.html">Розенбаум</a></span> 10</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="28.html">Элаха</a></span> 10</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элаха</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -432,22 +1264,58 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_scroll_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18257" data-wowhead="item=18257&domain=ru.classic">Рецепт: сильнейшее зелье омоложения</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="2.html">Ондрий</a></span> 80</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ондрий</span>
+<span>
+80</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="15.html">Маджестик</a></span> 30</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="36.html">Скаут</a></span> 10</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Скаут</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -460,22 +1328,58 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_scroll_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18290" data-wowhead="item=18290&domain=ru.classic">Чертеж: прицел "Бизникс" 247x128</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="37.html">Дентайр</a></span> 30</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дентайр</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="38.html">Цунами</a></span> 20</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Цунами</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="4.html">Лабрис</a></span> 10</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Лабрис</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -488,22 +1392,58 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_cloth_14.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16810" data-wowhead="item=16810&domain=ru.classic">Штаны Сердца Скверны</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="39.html">Шэдоуболтик</a></span> 40</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Шэдоуболтик</span>
+<span>
+40</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="31.html">Розенбаум</a></span> 20</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="30.html">Элара</a></span> 20</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -516,18 +1456,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_hammer_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17105" data-wowhead="item=17105&domain=ru.classic">Аура-каменный боевой молот</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="40.html">Тровгар</a></span> 10</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="32.html">Хилхелп</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -542,18 +1506,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_gem_pearl_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17204" data-wowhead="item=17204&domain=ru.classic">Глаз Сульфураса</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="41.html">Сейлормун</a></span> 100</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сейлормун</span>
+<span>
+100</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="42.html">Нюху</a></span> 20</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Нюху</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -568,18 +1556,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_resistnature.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18703" data-wowhead="item=18703&domain=ru.classic">Древний окаменелый древесный лист</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="43.html">Вива</a></span> 40</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Вива</span>
+<span>
+40</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="15.html">Маджестик</a></span> 20</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -594,18 +1606,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_sword_39.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17103" data-wowhead="item=17103&domain=ru.classic">Магический клинок Лазурной песни</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="31.html">Розенбаум</a></span> 10</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="40.html">Тровгар</a></span> 10</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -620,18 +1656,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_03.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16938" data-wowhead="item=16938&domain=ru.classic">Набедренники охотника на драконов</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="16.html">Голод</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Голод</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="44.html">Горнимир</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -646,18 +1706,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_chest_cloth_09.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16809" data-wowhead="item=16809&domain=ru.classic">Одеяния Сердца Скверны</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="30.html">Элара</a></span> 20</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="31.html">Розенбаум</a></span> 10</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -672,18 +1756,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_mindsooth.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18646" data-wowhead="item=18646&domain=ru.classic">Око Божественности</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="29.html">Инисса</a></span> 20</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="32.html">Хилхелп</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -698,18 +1806,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_10.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16852" data-wowhead="item=16852&domain=ru.classic">Перчатки истребителя великанов</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="43.html">Вива</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Вива</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="27.html">Дэпээсишка</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дэпээсишка</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -724,18 +1856,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_boots_chain_13.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16849" data-wowhead="item=16849&domain=ru.classic">Сапоги истребителя великанов</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="43.html">Вива</a></span> 30</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Вива</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="44.html">Горнимир</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -750,18 +1906,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_scroll_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18264" data-wowhead="item=18264&domain=ru.classic">Чертеж: точильный камень стихий</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="45.html">Санация</a></span> 60</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Санация</span>
+<span>
+60</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="24.html">Ардоберт</a></span> 10</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ардоберт</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -776,18 +1956,42 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_12.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18875" data-wowhead="item=18875&domain=ru.classic">Штаны из чешуи саламандры</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="10.html">Идрисс</a></span> 20</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="25.html">Ракель</a></span> 20</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ракель</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -802,14 +2006,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_shield_08.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17106" data-wowhead="item=17106&domain=ru.classic">Защита Малистара</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="46.html">Мэтью</a></span> 10</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Мэтью</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -826,14 +2042,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_06.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16835" data-wowhead="item=16835&domain=ru.classic">Кенарийские поножи</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="10.html">Идрисс</a></span> 10</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -850,14 +2078,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_chest_chain_03.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16845" data-wowhead="item=16845&domain=ru.classic">Кираса истребителя великанов</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="44.html">Горнимир</a></span> 20</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -874,14 +2114,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_necklace_10.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17109" data-wowhead="item=17109&domain=ru.classic">Колье Озарения</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="32.html">Хилхелп</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -898,14 +2150,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_sword_12.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17076" data-wowhead="item=17076&domain=ru.classic">Кромка костяного разорителя</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="34.html">Чарджа</a></span> 10</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чарджа</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -922,14 +2186,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_06.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16901" data-wowhead="item=16901&domain=ru.classic">Набедренники Ярости Бури</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; "><a href="19.html">Песньлуны</a></span> 20</td>
+<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Песньлуны</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -946,14 +2222,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_chest_plate03.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16853" data-wowhead="item=16853&domain=ru.classic">Нагрудный доспех законника</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="40.html">Тровгар</a></span> 20</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -970,14 +2258,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_shoulder_20.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16856" data-wowhead="item=16856&domain=ru.classic">Наплеч законника</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="40.html">Тровгар</a></span> 10</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -994,14 +2294,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_04.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16855" data-wowhead="item=16855&domain=ru.classic">Ножные латы законника</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="40.html">Тровгар</a></span> 20</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1018,14 +2330,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_chest_cloth_03.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16815" data-wowhead="item=16815&domain=ru.classic">Одеяния пророчества</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="29.html">Инисса</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1042,14 +2366,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_14.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16812" data-wowhead="item=16812&domain=ru.classic">Перчатки пророчества</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="29.html">Инисса</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1066,14 +2402,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_21.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17110" data-wowhead="item=17110&domain=ru.classic">Печать Архимага</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="31.html">Розенбаум</a></span> 10</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1090,14 +2438,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16846" data-wowhead="item=16846&domain=ru.classic">Полный шлем истребителя великанов</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="44.html">Горнимир</a></span> 20</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
+<span>
+20</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1114,14 +2474,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_07.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16930" data-wowhead="item=16930&domain=ru.classic">Поножи возмездия</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="31.html">Розенбаум</a></span> 10</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1138,14 +2510,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_mail_03.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16847" data-wowhead="item=16847&domain=ru.classic">Поножи истребителя великанов</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="27.html">Дэпээсишка</a></span> 30</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дэпээсишка</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1162,14 +2546,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_08.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16922" data-wowhead="item=16922&domain=ru.classic">Поножи превосходства</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="32.html">Хилхелп</a></span> 40</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
+<span>
+40</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1186,14 +2582,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_belt_28.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16851" data-wowhead="item=16851&domain=ru.classic">Пояс истребителя великанов</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="27.html">Дэпээсишка</a></span> 10</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дэпээсишка</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1210,14 +2618,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_belt_23.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16827" data-wowhead="item=16827&domain=ru.classic">Пояс ночного убийцы</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="12.html">Сагя</a></span> 10</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сагя</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1234,14 +2654,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_sword_22.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=1728" data-wowhead="item=1728&domain=ru.classic">Пылающий меч Тибу</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; "><a href="47.html">Дельроссо</a></span> 60</td>
+<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дельроссо</span>
+<span>
+60</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1258,14 +2690,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_08.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16808" data-wowhead="item=16808&domain=ru.classic">Рогатый шлем Сердца Скверны</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; "><a href="30.html">Элара</a></span> 10</td>
+<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1282,14 +2726,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_boots_07.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16811" data-wowhead="item=16811&domain=ru.classic">Сапоги пророчества</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; "><a href="29.html">Инисса</a></span> 10</td>
+<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1306,14 +2762,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/spell_fire_sealoffire.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=17203" data-wowhead="item=17203&domain=ru.classic">Сульфуронский слиток</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="36.html">Скаут</a></span> 10</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Скаут</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1330,14 +2798,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_note_01.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18259" data-wowhead="item=18259&domain=ru.classic">Формула чар для оружия: сила заклинаний I</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; "><a href="9.html">Фрмаг</a></span> 10</td>
+<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фрмаг</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1354,14 +2834,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_note_01.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18260" data-wowhead="item=18260&domain=ru.classic">Формула чар для оружия: целительная сила</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; "><a href="38.html">Цунами</a></span> 80</td>
+<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Цунами</span>
+<span>
+80</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1378,14 +2870,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_scroll_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=18292" data-wowhead="item=18292&domain=ru.classic">Чертеж: снайперская винтовка Центра</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="36.html">Скаут</a></span> 80</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Скаут</span>
+<span>
+80</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1402,14 +2906,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_05.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16854" data-wowhead="item=16854&domain=ru.classic">Шлем законника</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; "><a href="40.html">Тровгар</a></span> 10</td>
+<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1426,14 +2942,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_06.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16909" data-wowhead="item=16909&domain=ru.classic">Штаны Кровавых Клыков</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="7.html">Роршах</a></span> 10</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Роршах</span>
+<span>
+10</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
@@ -1450,14 +2978,26 @@ const whTooltips = {colorLinks: true, iconizeLinks: false, renameLinks: true};</
 <tr>
 <td style="vertical-align: top;">
 <img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_06.jpg" /></td>
-<td style="vertical-align: top; width: 350;">
+<td style="vertical-align: top; width: 350; font-size: 20;">
 <a href="https://www.wowhead.com/classic/ru/item=16822" data-wowhead="item=16822&domain=ru.classic">Штаны ночного убийцы</a></td>
 <td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;">
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; "><a href="37.html">Дентайр</a></span> 30</td>
+<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дентайр</span>
+<span>
+30</span>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<td>
+test test test</td>
+</tbody>
+</table>
+</div>
+</td>
 </tr>
 <tr>
 </tr>
