@@ -55,27 +55,11 @@ function find_popup() {
         return [null,null];
     }
     var popup = e.target || e.srcElement;
-    //popup = popup.children[1];
-
-    if (popup && popup.children) {
-        for (var i = 0; i < popup.children.length; i++) {
-          if (popup.children[i].classList.contains("cursor-popup")) {
-            popup = popup.children[i];
-            break;
-          }
-        }
-    }
+    popup = popup.children[1];
 
     if (!popup) {
         popup = e.currentTarget;
-        if (popup && popup.children) {
-            for (var i = 0; i < popup.children.length; i++) {
-              if (popup.children[i].classList.contains("cursor-popup")) {
-                popup = popup.children[i];
-                break;
-              }
-            }
-        }
+        popup = popup.children[1];
         if (!popup) {
             return [null,null];
         }
@@ -149,6 +133,18 @@ function toggle_popup() {
 <tr>
 <td style="text-align: right;">
 1</td>
+<td>
+2026-06-28 21:17:43</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=17969" data-wowhead="item=17969&domain=ru.classic">Красный мешочек с самоцветами</a></td>
+<td>
+2026-06-28</td>
+<td>
+Ониксия</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+2</td>
 <td>
 2026-06-17 22:44:43</td>
 <td>

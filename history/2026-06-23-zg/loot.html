@@ -61,27 +61,11 @@ function find_popup() {
         return [null,null];
     }
     var popup = e.target || e.srcElement;
-    //popup = popup.children[1];
-
-    if (popup && popup.children) {
-        for (var i = 0; i < popup.children.length; i++) {
-          if (popup.children[i].classList.contains("cursor-popup")) {
-            popup = popup.children[i];
-            break;
-          }
-        }
-    }
+    popup = popup.children[1];
 
     if (!popup) {
         popup = e.currentTarget;
-        if (popup && popup.children) {
-            for (var i = 0; i < popup.children.length; i++) {
-              if (popup.children[i].classList.contains("cursor-popup")) {
-                popup = popup.children[i];
-                break;
-              }
-            }
-        }
+        popup = popup.children[1];
         if (!popup) {
             return [null,null];
         }
@@ -174,7 +158,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Ракель</td>
@@ -208,7 +192,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Арчимбольдо</td>
@@ -242,7 +226,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Розенбаум</td>
@@ -258,7 +242,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Легистика</td>
@@ -292,7 +276,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Арчимбольдо</td>
@@ -308,7 +292,7 @@ function toggle_popup() {
 резерв</td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Мэтью</td>
@@ -352,7 +336,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Легистика</td>
@@ -386,7 +370,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Ракель</td>
@@ -402,7 +386,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Мэтью</td>
@@ -418,7 +402,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Палычпал</td>
@@ -464,7 +448,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Розенбаум</td>
@@ -480,7 +464,7 @@ function toggle_popup() {
 резерв</td>
 </tr>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Хилхелп</td>
@@ -514,7 +498,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Легистика</td>
@@ -530,7 +514,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Мэтью</td>
@@ -584,7 +568,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Сагя</td>
@@ -618,7 +602,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Сагя</td>
@@ -634,7 +618,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Легистика</td>
@@ -650,7 +634,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Ракель</td>
@@ -666,7 +650,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 4</td>
 <td>
 Хилхелп</td>
@@ -682,7 +666,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 5</td>
 <td>
 Мэтью</td>
@@ -698,7 +682,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 6</td>
 <td>
 Митриастр</td>
@@ -714,7 +698,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 7</td>
 <td>
 Розенбаум</td>
@@ -748,7 +732,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Легистика</td>
@@ -792,7 +776,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Мэтью</td>
@@ -826,7 +810,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Горнимир</td>
@@ -860,7 +844,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Мэтью</td>
@@ -876,7 +860,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Палычпал</td>
@@ -920,7 +904,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Легистика</td>
@@ -966,7 +950,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Розенбаум</td>
@@ -1000,7 +984,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Легистика</td>
@@ -1016,7 +1000,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Сагя</td>
@@ -1072,7 +1056,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Палычпал</td>
@@ -1088,7 +1072,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Мэтью</td>
@@ -1104,7 +1088,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Хилхелп</td>
@@ -1138,7 +1122,7 @@ function toggle_popup() {
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Цунами</td>
@@ -1154,7 +1138,7 @@ function toggle_popup() {
 </td>
 </tr>
 <tr style="color: #00ff00;">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Горнимир</td>

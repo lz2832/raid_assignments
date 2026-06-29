@@ -55,27 +55,11 @@ function find_popup() {
         return [null,null];
     }
     var popup = e.target || e.srcElement;
-    //popup = popup.children[1];
-
-    if (popup && popup.children) {
-        for (var i = 0; i < popup.children.length; i++) {
-          if (popup.children[i].classList.contains("cursor-popup")) {
-            popup = popup.children[i];
-            break;
-          }
-        }
-    }
+    popup = popup.children[1];
 
     if (!popup) {
         popup = e.currentTarget;
-        if (popup && popup.children) {
-            for (var i = 0; i < popup.children.length; i++) {
-              if (popup.children[i].classList.contains("cursor-popup")) {
-                popup = popup.children[i];
-                break;
-              }
-            }
-        }
+        popup = popup.children[1];
         if (!popup) {
             return [null,null];
         }
@@ -176,7 +160,7 @@ function toggle_popup() {
 <td>
 <a href="loot_3.html">Алтынай</a></td>
 <td style="text-align: right;">
-10</td>
+12</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -280,7 +264,7 @@ function toggle_popup() {
 <td>
 <a href="loot_16.html">Братик</a></td>
 <td style="text-align: right;">
-1</td>
+2</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -296,7 +280,7 @@ function toggle_popup() {
 <td>
 <a href="loot_18.html">Вива</a></td>
 <td style="text-align: right;">
-29</td>
+31</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -304,7 +288,7 @@ function toggle_popup() {
 <td>
 <a href="loot_19.html">Ворегор</a></td>
 <td style="text-align: right;">
-4</td>
+9</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -592,7 +576,7 @@ function toggle_popup() {
 <td>
 <a href="loot_55.html">Мириам</a></td>
 <td style="text-align: right;">
-20</td>
+21</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -664,7 +648,7 @@ function toggle_popup() {
 <td>
 <a href="loot_64.html">Палычпал</a></td>
 <td style="text-align: right;">
-42</td>
+44</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -672,7 +656,7 @@ function toggle_popup() {
 <td>
 <a href="loot_65.html">Параллакс</a></td>
 <td style="text-align: right;">
-1</td>
+3</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -688,7 +672,7 @@ function toggle_popup() {
 <td>
 <a href="loot_67.html">Перун</a></td>
 <td style="text-align: right;">
-20</td>
+22</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -712,7 +696,7 @@ function toggle_popup() {
 <td>
 <a href="loot_70.html">Ракель</a></td>
 <td style="text-align: right;">
-38</td>
+42</td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -814,7 +798,7 @@ function toggle_popup() {
 <td style="text-align: right;">
 83</td>
 <td>
-<a href="loot_83.html">Темпеста</a></td>
+<a href="loot_83.html">Тассадар</a></td>
 <td style="text-align: right;">
 1</td>
 </tr>
@@ -822,71 +806,71 @@ function toggle_popup() {
 <td style="text-align: right;">
 84</td>
 <td>
-<a href="loot_84.html">Тика</a></td>
+<a href="loot_84.html">Темпеста</a></td>
 <td style="text-align: right;">
-2</td>
+1</td>
 </tr>
 <tr>
 <td style="text-align: right;">
 85</td>
 <td>
-<a href="loot_85.html">Тоскан</a></td>
-<td style="text-align: right;">
-1</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-86</td>
-<td>
-<a href="loot_86.html">Тотошка</a></td>
-<td style="text-align: right;">
-16</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-87</td>
-<td>
-<a href="loot_87.html">Тровгар</a></td>
-<td style="text-align: right;">
-9</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-88</td>
-<td>
-<a href="loot_88.html">Ультимас</a></td>
-<td style="text-align: right;">
-26</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-89</td>
-<td>
-<a href="loot_89.html">Унголиан</a></td>
-<td style="text-align: right;">
-1</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-90</td>
-<td>
-<a href="loot_90.html">Фантастика</a></td>
-<td style="text-align: right;">
-34</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-91</td>
-<td>
-<a href="loot_91.html">Фенакс</a></td>
+<a href="loot_85.html">Тика</a></td>
 <td style="text-align: right;">
 2</td>
 </tr>
 <tr>
 <td style="text-align: right;">
+86</td>
+<td>
+<a href="loot_86.html">Тоскан</a></td>
+<td style="text-align: right;">
+1</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+87</td>
+<td>
+<a href="loot_87.html">Тотошка</a></td>
+<td style="text-align: right;">
+16</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+88</td>
+<td>
+<a href="loot_88.html">Тровгар</a></td>
+<td style="text-align: right;">
+9</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+89</td>
+<td>
+<a href="loot_89.html">Ультимас</a></td>
+<td style="text-align: right;">
+26</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+90</td>
+<td>
+<a href="loot_90.html">Унголиан</a></td>
+<td style="text-align: right;">
+1</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+91</td>
+<td>
+<a href="loot_91.html">Фантастика</a></td>
+<td style="text-align: right;">
+37</td>
+</tr>
+<tr>
+<td style="text-align: right;">
 92</td>
 <td>
-<a href="loot_92.html">Фондор</a></td>
+<a href="loot_92.html">Фенакс</a></td>
 <td style="text-align: right;">
 2</td>
 </tr>
@@ -894,119 +878,135 @@ function toggle_popup() {
 <td style="text-align: right;">
 93</td>
 <td>
-<a href="loot_93.html">Фрмаг</a></td>
+<a href="loot_93.html">Фондор</a></td>
 <td style="text-align: right;">
-4</td>
+2</td>
 </tr>
 <tr>
 <td style="text-align: right;">
 94</td>
 <td>
-<a href="loot_94.html">Фёст</a></td>
-<td style="text-align: right;">
-14</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-95</td>
-<td>
-<a href="loot_95.html">Хагнос</a></td>
-<td style="text-align: right;">
-1</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-96</td>
-<td>
-<a href="loot_96.html">Хиллбой</a></td>
-<td style="text-align: right;">
-2</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-97</td>
-<td>
-<a href="loot_97.html">Хилхелп</a></td>
-<td style="text-align: right;">
-35</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-98</td>
-<td>
-<a href="loot_98.html">Хока</a></td>
+<a href="loot_94.html">Фрмаг</a></td>
 <td style="text-align: right;">
 4</td>
 </tr>
 <tr>
 <td style="text-align: right;">
-99</td>
+95</td>
 <td>
-<a href="loot_99.html">Цунами</a></td>
+<a href="loot_95.html">Фёст</a></td>
 <td style="text-align: right;">
-16</td>
+14</td>
 </tr>
 <tr>
 <td style="text-align: right;">
-100</td>
+96</td>
 <td>
-<a href="loot_100.html">Чарджа</a></td>
+<a href="loot_96.html">Хагнос</a></td>
 <td style="text-align: right;">
-44</td>
+1</td>
 </tr>
 <tr>
 <td style="text-align: right;">
-101</td>
+97</td>
 <td>
-<a href="loot_101.html">Чоко</a></td>
-<td style="text-align: right;">
-34</td>
-</tr>
-<tr>
-<td style="text-align: right;">
-102</td>
-<td>
-<a href="loot_102.html">Шубин</a></td>
+<a href="loot_97.html">Хиллбой</a></td>
 <td style="text-align: right;">
 2</td>
 </tr>
 <tr>
 <td style="text-align: right;">
+98</td>
+<td>
+<a href="loot_98.html">Хилхелп</a></td>
+<td style="text-align: right;">
+37</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+99</td>
+<td>
+<a href="loot_99.html">Хока</a></td>
+<td style="text-align: right;">
+4</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+100</td>
+<td>
+<a href="loot_100.html">Цунами</a></td>
+<td style="text-align: right;">
+18</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+101</td>
+<td>
+<a href="loot_101.html">Чарджа</a></td>
+<td style="text-align: right;">
+44</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+102</td>
+<td>
+<a href="loot_102.html">Чоко</a></td>
+<td style="text-align: right;">
+34</td>
+</tr>
+<tr>
+<td style="text-align: right;">
 103</td>
 <td>
-<a href="loot_103.html">Шэдоуболтик</a></td>
+<a href="loot_103.html">Чокобойка</a></td>
 <td style="text-align: right;">
-16</td>
+1</td>
 </tr>
 <tr>
 <td style="text-align: right;">
 104</td>
 <td>
-<a href="loot_104.html">Элара</a></td>
+<a href="loot_104.html">Шубин</a></td>
 <td style="text-align: right;">
-35</td>
+2</td>
 </tr>
 <tr>
 <td style="text-align: right;">
 105</td>
 <td>
-<a href="loot_105.html">Элаха</a></td>
+<a href="loot_105.html">Шэдоуболтик</a></td>
 <td style="text-align: right;">
-20</td>
+16</td>
 </tr>
 <tr>
 <td style="text-align: right;">
 106</td>
 <td>
-<a href="loot_106.html">Элини</a></td>
+<a href="loot_106.html">Элара</a></td>
 <td style="text-align: right;">
-15</td>
+35</td>
 </tr>
 <tr>
 <td style="text-align: right;">
 107</td>
 <td>
-<a href="loot_107.html">Юстина</a></td>
+<a href="loot_107.html">Элаха</a></td>
+<td style="text-align: right;">
+21</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+108</td>
+<td>
+<a href="loot_108.html">Элини</a></td>
+<td style="text-align: right;">
+15</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+109</td>
+<td>
+<a href="loot_109.html">Юстина</a></td>
 <td style="text-align: right;">
 1</td>
 </tr>

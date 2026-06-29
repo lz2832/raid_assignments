@@ -55,27 +55,11 @@ function find_popup() {
         return [null,null];
     }
     var popup = e.target || e.srcElement;
-    //popup = popup.children[1];
-
-    if (popup && popup.children) {
-        for (var i = 0; i < popup.children.length; i++) {
-          if (popup.children[i].classList.contains("cursor-popup")) {
-            popup = popup.children[i];
-            break;
-          }
-        }
-    }
+    popup = popup.children[1];
 
     if (!popup) {
         popup = e.currentTarget;
-        if (popup && popup.children) {
-            for (var i = 0; i < popup.children.length; i++) {
-              if (popup.children[i].classList.contains("cursor-popup")) {
-                popup = popup.children[i];
-                break;
-              }
-            }
-        }
+        popup = popup.children[1];
         if (!popup) {
             return [null,null];
         }
@@ -170,7 +154,7 @@ function toggle_popup() {
 <td>
 (предстоящий)</td>
 <td>
- <a href="https://raid-helper.xyz/event/1520167191486398586">rh</a> <a href="https://discord.com/channels/768620405387821076/1511090325102399556/1520167191486398586">запись в дискорде</a></td>
+ <a href="https://raid-helper.xyz/event/1520167191486398586">rh</a> <a href="https://discord.com/channels/902808093648363560/1511090325102399556/1520167191486398586">запись в дискорде</a></td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -182,7 +166,7 @@ function toggle_popup() {
 <td>
 (предстоящий)</td>
 <td>
- <a href="https://raid-helper.xyz/event/1520167214542618826">rh</a> <a href="https://discord.com/channels/768620405387821076/1509580461461078086/1520167214542618826">запись в дискорде</a></td>
+ <a href="https://raid-helper.xyz/event/1520167214542618826">rh</a> <a href="https://discord.com/channels/902808093648363560/1509580461461078086/1520167214542618826">запись в дискорде</a></td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -192,9 +176,9 @@ function toggle_popup() {
 <td style="">
 Зул'Гуруб</td>
 <td>
-(предстоящий)</td>
+</td>
 <td>
- <a href="https://raid-helper.xyz/event/1520173076401225760">rh</a> <a href="https://discord.com/channels/768620405387821076/947411281424576513/1520173076401225760">запись в дискорде</a></td>
+ <a href="2026-06-28-zg/assignments/index.html">назначения</a> <a href="https://ru.vanilla.warcraftlogs.com/reports/vfQmW4h8K7RtyAqG">логи</a> <a href="2026-06-28-zg/sr.html">резервы</a> <a href="2026-06-28-zg/loot.html">добыча</a></td>
 </tr>
 <tr>
 <td style="text-align: right;">
@@ -206,7 +190,7 @@ function toggle_popup() {
 <td>
 </td>
 <td>
- <a href="2026-06-28-ony/assignments/index.html">назначения</a> <a href="2026-06-28-ony/sr.html">резервы</a></td>
+ <a href="2026-06-28-ony/assignments/index.html">назначения</a> <a href="https://ru.vanilla.warcraftlogs.com/reports/Aprf74wVqD2kHXZ3">логи</a> <a href="2026-06-28-ony/sr.html">резервы</a> <a href="2026-06-28-ony/loot.html">добыча</a></td>
 </tr>
 <tr>
 <td style="text-align: right;">

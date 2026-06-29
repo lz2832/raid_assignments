@@ -55,27 +55,11 @@ function find_popup() {
         return [null,null];
     }
     var popup = e.target || e.srcElement;
-    //popup = popup.children[1];
-
-    if (popup && popup.children) {
-        for (var i = 0; i < popup.children.length; i++) {
-          if (popup.children[i].classList.contains("cursor-popup")) {
-            popup = popup.children[i];
-            break;
-          }
-        }
-    }
+    popup = popup.children[1];
 
     if (!popup) {
         popup = e.currentTarget;
-        if (popup && popup.children) {
-            for (var i = 0; i < popup.children.length; i++) {
-              if (popup.children[i].classList.contains("cursor-popup")) {
-                popup = popup.children[i];
-                break;
-              }
-            }
-        }
+        popup = popup.children[1];
         if (!popup) {
             return [null,null];
         }
@@ -150,6 +134,18 @@ function toggle_popup() {
 <td style="text-align: right;">
 1</td>
 <td>
+2026-06-28 21:52:54</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20032" data-wowhead="item=20032&domain=ru.classic">Ниспадающие ритаульные одеяния</a></td>
+<td>
+2026-06-28</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+2</td>
+<td>
 2026-06-27 22:29:50</td>
 <td>
 <a href="https://www.wowhead.com/classic/ru/item=21464" data-wowhead="item=21464&domain=ru.classic">Кандалы Неуязвимых</a></td>
@@ -160,7 +156,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-2</td>
+3</td>
 <td>
 2026-06-07 21:58:44</td>
 <td>
@@ -172,7 +168,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-3</td>
+4</td>
 <td>
 2026-06-06 21:57:48</td>
 <td>
@@ -184,7 +180,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-4</td>
+5</td>
 <td>
 2026-06-05 21:54:20</td>
 <td>
@@ -196,7 +192,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-5</td>
+6</td>
 <td>
 2026-06-03 20:39:12</td>
 <td>
@@ -208,7 +204,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-6</td>
+7</td>
 <td>
 2026-05-31 21:57:39</td>
 <td>
@@ -220,7 +216,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-7</td>
+8</td>
 <td>
 2026-05-28 23:17:37</td>
 <td>
@@ -232,7 +228,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-8</td>
+9</td>
 <td>
 2026-05-25 22:07:47</td>
 <td>
@@ -244,7 +240,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-9</td>
+10</td>
 <td>
 2026-05-24 22:26:29</td>
 <td>
@@ -256,7 +252,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-10</td>
+11</td>
 <td>
 2026-05-23 22:29:28</td>
 <td>
@@ -268,7 +264,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-11</td>
+12</td>
 <td>
 2026-05-12 21:58:22</td>
 <td>
@@ -280,7 +276,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-12</td>
+13</td>
 <td>
 2026-05-04 22:50:15</td>
 <td>
@@ -292,7 +288,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-13</td>
+14</td>
 <td>
 2026-05-02 22:49:05</td>
 <td>
@@ -304,7 +300,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-14</td>
+15</td>
 <td>
 2026-05-02 22:19:49</td>
 <td>
@@ -316,7 +312,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-15</td>
+16</td>
 <td>
 2026-04-30 22:45:52</td>
 <td>
@@ -328,7 +324,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-16</td>
+17</td>
 <td>
 2026-04-21 21:26:33</td>
 <td>
@@ -340,7 +336,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-17</td>
+18</td>
 <td>
 2025-10-21 22:46:00</td>
 <td>
@@ -352,7 +348,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-18</td>
+19</td>
 <td>
 2025-10-21 21:43:31</td>
 <td>
@@ -364,7 +360,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-19</td>
+20</td>
 <td>
 2025-10-11 22:07:31</td>
 <td>
@@ -376,7 +372,7 @@ function toggle_popup() {
 </tr>
 <tr>
 <td style="text-align: right;">
-20</td>
+21</td>
 <td>
 2025-10-11 21:18:45</td>
 <td>

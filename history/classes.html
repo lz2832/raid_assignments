@@ -55,27 +55,11 @@ function find_popup() {
         return [null,null];
     }
     var popup = e.target || e.srcElement;
-    //popup = popup.children[1];
-
-    if (popup && popup.children) {
-        for (var i = 0; i < popup.children.length; i++) {
-          if (popup.children[i].classList.contains("cursor-popup")) {
-            popup = popup.children[i];
-            break;
-          }
-        }
-    }
+    popup = popup.children[1];
 
     if (!popup) {
         popup = e.currentTarget;
-        if (popup && popup.children) {
-            for (var i = 0; i < popup.children.length; i++) {
-              if (popup.children[i].classList.contains("cursor-popup")) {
-                popup = popup.children[i];
-                break;
-              }
-            }
-        }
+        popup = popup.children[1];
         if (!popup) {
             return [null,null];
         }
@@ -169,22 +153,48 @@ function toggle_popup() {
 6. другие группы с жрецами не лечим, группы без жрецов (маги, кастеры) можно обновлением/подщитовывать, но фокус на своей группе</div>
 <br />
 <div>
-Макрос на контроль в Наксрамасе. Единственный макрос, делает всё</div>
+Макрос на контроль в Наксрамасе. Единственный макрос, который делает всё</div>
 <br />
-<div>
-
+<code>
 #showtooltip Mind Control
+<br>
 /cast [nopet,harm] Mind Control
+<br>
 /targetexact [pet] Instuctor Razuvious
+<br>
 /targetexact [pet] Grand Widow Faerlina
+<br>
 /petattack
+<br>
 /cast Shield Wall
+<br>
 /cast Taunt
-/cast Widow's Embrace
-</div>
+<br>
+/cast Widow's Embrace</code>
 <h4>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Паладин</span></h4>
 <div>
 Рекомендуемые таланты в специализации Свет: <a href="https://www.wowhead.com/classic/talent-calc/paladin/05503120521351-503201-502">ссылка</a></div>
+<h4>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Охотник</span></h4>
+<div>
+Рекомендуемые таланты для рейдового охотника-напульщика: <a href="https://www.wowhead.com/classic/talent-calc/hunter/55050221-05251030513051">ссылка</a></div>
+<div>
+Макрос на все ловушки в одной кнопке</div>
+<br />
+<code>
+#showtooltip Ледяная ловушка
+<br>
+/cleartarget
+<br>
+/petpassive
+<br>
+/cast [combat] Притвориться мертвым
+<br>
+/cast [mod:shift] Ледяная ловушка
+<br>
+/cast [mod:ctrl] Замораживающая ловушка
+<br>
+/cast [mod:alt] Взрывная ловушка</code>
 </body>
 </html>

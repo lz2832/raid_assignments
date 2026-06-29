@@ -55,27 +55,11 @@ function find_popup() {
         return [null,null];
     }
     var popup = e.target || e.srcElement;
-    //popup = popup.children[1];
-
-    if (popup && popup.children) {
-        for (var i = 0; i < popup.children.length; i++) {
-          if (popup.children[i].classList.contains("cursor-popup")) {
-            popup = popup.children[i];
-            break;
-          }
-        }
-    }
+    popup = popup.children[1];
 
     if (!popup) {
         popup = e.currentTarget;
-        if (popup && popup.children) {
-            for (var i = 0; i < popup.children.length; i++) {
-              if (popup.children[i].classList.contains("cursor-popup")) {
-                popup = popup.children[i];
-                break;
-              }
-            }
-        }
+        popup = popup.children[1];
         if (!popup) {
             return [null,null];
         }
@@ -145,7 +129,7 @@ function toggle_popup() {
 <h3>
 Огненные Недра - <a href="points_bwl.html">Логово Крыла Тьмы</a> </h3>
 <div>
-Обновлено: 2026-06-28 21:22</div>
+Обновлено: 2026-06-29 05:53</div>
 <br />
 <table>
 <tbody>
@@ -158,108 +142,448 @@ function toggle_popup() {
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ультимас</span>
 <span>
 200</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+180</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+200</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+160</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+180</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+140</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+160</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+120</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+140</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+100</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+120</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+100</td>
+<td style="text-align: right; color: #00ff00">
++100</td>
+<td>
+</td>
+<td>
+Фора на Громовую Ярость</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ондрий</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Эскханор</span>
 <span>
 160</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+140</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+160</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+120</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+140</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+100</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+120</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+100</td>
+<td style="text-align: right; color: #00ff00">
++100</td>
+<td>
+</td>
+<td>
+Фора на Громовую Ярость</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Лабрис</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Луибоб</span>
 <span>
 100</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+100</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фёст</span>
 <span>
 60</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Роршах</span>
 <span>
 50</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+50</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -278,94 +602,202 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
-<span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Мириам</span>
-<span>
-20</span>
-<div class="cursor-popup">
-<table style="color: #ffff00">
-<tbody>
-<td>
-test test test</td>
-</tbody>
-</table>
-</div>
-</td>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
-<span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фрмаг</span>
-<span>
-10</span>
-<div class="cursor-popup">
-<table style="color: #ffff00">
-<tbody>
-<td>
-test test test</td>
-</tbody>
-</table>
-</div>
-</td>
-</tr>
-<tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
-<span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
-<span>
-10</span>
-<div class="cursor-popup">
-<table style="color: #ffff00">
-<tbody>
-<td>
-test test test</td>
-</tbody>
-</table>
-</div>
-</td>
-</tr>
-<tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
-<span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Митриастр</span>
-<span>
-10</span>
-<div class="cursor-popup">
-<table style="color: #ffff00">
-<tbody>
-<td>
-test test test</td>
-</tbody>
-</table>
-</div>
-</td>
-</tr>
-<tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сагя</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фрмаг</span>
+<span>
+10</span>
+<span>
+✔</span>
+</div>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Мириам</span>
+<span>
+20</span>
+<span>
+✔</span>
+</div>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
+<span>
+10</span>
+<span>
+✔</span>
+</div>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Митриастр</span>
+<span>
+10</span>
+<span>
+✔</span>
+</div>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<tr>
+<td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сталиум</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -384,80 +816,166 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Илнос</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
-<span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
-<span>
-20</span>
-<div class="cursor-popup">
-<table style="color: #ffff00">
-<tbody>
-<td>
-test test test</td>
-</tbody>
-</table>
-</div>
-</td>
-</tr>
-<tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Голод</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дары</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фёст</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
+<span>
+20</span>
+<span>
+✔</span>
+</div>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<tr>
+<td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -476,80 +994,220 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Перун</span>
 <span>
 50</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+50</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сталиум</span>
 <span>
 30</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Песньлуны</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Легистика</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -568,80 +1226,234 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Шандрисса</span>
 <span>
 80</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Эльфинита</span>
 <span>
 60</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Анихилятор</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фёст</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ардоберт</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -660,80 +1472,222 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Легистика</span>
 <span>
 90</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+70</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+90</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+50</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+70</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+50</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
-<span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Песньлуны</span>
-<span>
-20</span>
-<div class="cursor-popup">
-<table style="color: #ffff00">
-<tbody>
-<td>
-test test test</td>
-</tbody>
-</table>
-</div>
-</td>
-</tr>
-<tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ракель</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Перун</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Песньлуны</span>
+<span>
+20</span>
+<span>
+✔</span>
+</div>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -752,64 +1706,154 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дары</span>
 <span>
 30</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чоко</span>
 <span>
 20</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дэпээсишка</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -830,64 +1874,220 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Мириам</span>
 <span>
 60</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сагя</span>
 <span>
 40</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
-<span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элаха</span>
-<span>
-30</span>
-<div class="cursor-popup">
-<table style="color: #ffff00">
-<tbody>
-<td>
-test test test</td>
-</tbody>
-</table>
-</div>
-</td>
-</tr>
-<tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Митриастр</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элаха</span>
+<span>
+30</span>
+<span>
+✔</span>
+</div>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -908,64 +2108,136 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элаха</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
-<span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
-<span>
-10</span>
-<div class="cursor-popup">
-<table style="color: #ffff00">
-<tbody>
-<td>
-test test test</td>
-</tbody>
-</table>
-</div>
-</td>
-</tr>
-<tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
+<span>
+10</span>
+<span>
+✔</span>
+</div>
+<div class="cursor-popup">
+<table style="color: #ffff00">
+<tbody>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -986,64 +2258,164 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
 <span>
 40</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сагя</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1064,64 +2436,176 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Всемписс</span>
 <span>
 40</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чарджа</span>
 <span>
 30</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Анихилятор</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фёст</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1142,48 +2626,216 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ротара</span>
 <span>
 80</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чарджа</span>
 <span>
 60</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+50</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+50</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чоко</span>
 <span>
 40</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1206,48 +2858,90 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элаха</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1270,48 +2964,174 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ондрий</span>
 <span>
 80</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
 <span>
 30</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Скаут</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1334,48 +3154,132 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дентайр</span>
 <span>
 30</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Цунами</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Лабрис</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1398,48 +3302,132 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Шэдоуболтик</span>
 <span>
 40</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1462,32 +3450,60 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1512,32 +3528,116 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сейлормун</span>
 <span>
 100</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+100</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Нюху</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1562,32 +3662,78 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Вива</span>
 <span>
 40</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Маджестик</span>
 <span>
 20</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1612,32 +3758,60 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1662,32 +3836,62 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Голод</span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Голод</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1712,32 +3916,76 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
 <span>
-20</span>
+10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
 <span>
-10</span>
+20</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1762,32 +4010,78 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
 <span>
 20</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1812,32 +4106,60 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Вива</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дэпээсишка</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1862,32 +4184,74 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Вива</span>
 <span>
 30</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1912,32 +4276,90 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Санация</span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ардоберт</span>
 <span>
-60</span>
+10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
-<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ардоберт</span>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Санация</span>
 <span>
-10</span>
+60</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1962,32 +4384,88 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </td>
 </tr>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Ракель</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2012,16 +4490,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Мэтью</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2048,16 +4540,32 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Идрисс</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2084,16 +4592,46 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
 <span>
 20</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2120,16 +4658,32 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2156,16 +4710,32 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Чарджа</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2192,16 +4762,44 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ff7c0a; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ff7c0a; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Песньлуны</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2228,16 +4826,44 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2264,16 +4890,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2300,16 +4940,46 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
 <span>
 20</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2336,16 +5006,32 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2372,16 +5058,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2408,16 +5108,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2444,16 +5158,44 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Горнимир</span>
 <span>
 20</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2480,16 +5222,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Розенбаум</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2516,16 +5272,58 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дэпээсишка</span>
 <span>
 30</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2552,16 +5350,74 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Хилхелп</span>
 <span>
 40</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2588,16 +5444,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дэпээсишка</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2624,16 +5494,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Сагя</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2660,16 +5544,58 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #c69b6d; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #c69b6d; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дельроссо</span>
 <span>
 60</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2696,16 +5622,32 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #8787ed; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #8787ed; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Элара</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2732,16 +5674,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #ffffff; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #ffffff; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Инисса</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2768,16 +5724,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Скаут</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2804,16 +5774,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #3fc6ea; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #3fc6ea; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Фрмаг</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2840,16 +5824,86 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #aad372; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #aad372; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Цунами</span>
 <span>
 80</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+70</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+70</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+60</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+40</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2876,16 +5930,86 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Скаут</span>
 <span>
 80</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+70</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+80</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+50</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+70</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+50</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-03</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++20</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-01</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2912,16 +6036,32 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #f48cba; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #f48cba; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Тровгар</span>
 <span>
 10</span>
+<span>
+✔</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+✔</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2948,16 +6088,30 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Роршах</span>
 <span>
 10</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2984,16 +6138,58 @@ test test test</td>
 <table>
 <tbody>
 <tr>
-<td style="background-color: #fff468; width: 135;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<td style="background-color: #fff468; width: 150;" ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
 <span>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> Дентайр</span>
 <span>
 30</span>
+</div>
 <div class="cursor-popup">
 <table style="color: #ffff00">
 <tbody>
+<tr>
 <td>
-test test test</td>
+2026-06-24</td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+30</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-17</td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+20</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+2026-06-10</td>
+<td style="text-align: right; color: white;">
+0</td>
+<td style="color: white;">
+-></td>
+<td style="text-align: right; color: white;">
+10</td>
+<td style="text-align: right; color: #00ff00">
++10</td>
+<td>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
