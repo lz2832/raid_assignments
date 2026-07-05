@@ -29,7 +29,7 @@ th, td {
     background: #ffffff;
     color: white;
     padding: 8px 16px;
-    border-radius: 40px;
+    border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
     font-family: monospace;
@@ -46,6 +46,18 @@ th, td {
     opacity: 1;
     visibility: visible;
 }
+
+.diagonal-stripes {
+  background: repeating-linear-gradient(
+    -30deg,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+</style>
+<style>
 
 .roll {
     color: #ffff00
@@ -142,28 +154,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Элара</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-56<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -176,28 +166,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Элаха</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Элаха</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-68<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -210,28 +178,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Чарджа</span> (оффспек)</div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Чарджа</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-98<td style="text-align: right;">
-(1-99)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -244,60 +190,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Розенбаум</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Розенбаум</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-42<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Элаха</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-85<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-28<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -310,28 +202,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Горнимир</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Горнимир</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-38<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -344,28 +214,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Элара</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-27<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -378,28 +226,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Валиор</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Валиор</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-8<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -412,76 +238,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Горнимир</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-10<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Горнимир</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-48<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Роршах</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-48<td style="text-align: right;">
-(1-99)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-4</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-33<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -494,60 +250,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Горнимир</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Роршах</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-28<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Горнимир</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-96<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-84<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -560,60 +262,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Элара</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Элаха</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-14<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-46<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Сталиум</td>
-<td>
-жрец</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-72<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -626,60 +274,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Фантастика</span> (резерв)</div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-3<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Горнимир</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-46<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Фантастика</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-75<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -692,76 +286,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-90<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Розенбаум</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-34<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-60<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-4</td>
-<td>
-Фантастика</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-54<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -774,60 +298,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Чарджа</span> (оффспек)</div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-63<td style="text-align: right;">
-(1-99)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Чарджа</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-87<td style="text-align: right;">
-(1-99)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-27<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -840,60 +310,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Каваи</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Чарджа</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-76<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-8<td style="text-align: right;">
-(1-99)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Каваи</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-91<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -906,28 +322,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-83<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -940,44 +334,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Роршах</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Роршах</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-81<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Горнимир</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-33<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -1000,60 +356,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-65<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Роршах</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-63<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Горнимир</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-92<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -1066,44 +368,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Роршах</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-24<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Роршах</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-65<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -1116,28 +380,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Чарджа</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Чарджа</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-27<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -1160,28 +402,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-88<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -1194,44 +414,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span> (резерв)</div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-20<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-89<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -1254,28 +436,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Горнимир</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Горнимир</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-29<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -1310,76 +470,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Элара</span> (резерв)</div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Мириам</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-82<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-95<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Сталиум</td>
-<td>
-жрец</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-1<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-4</td>
-<td>
-Мириам</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-13<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -1392,79 +482,12 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Розенбаум</span> (резерв)</div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Розенбаум</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-76<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Перун</td>
-<td>
-паладин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-48<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Элаха</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-17<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-4</td>
-<td>
-Элара</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-61<td>
-(1-100)</td>
-</td>
-<td>
 </td>
 </tr>
 </tbody>
 </table>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
+<br />
+<div>
+Главный лутожор рейда - <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span> с 6 предметами.</div>
 </body>
 </html>

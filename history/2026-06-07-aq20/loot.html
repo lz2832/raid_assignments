@@ -29,7 +29,7 @@ th, td {
     background: #ffffff;
     color: white;
     padding: 8px 16px;
-    border-radius: 40px;
+    border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
     font-family: monospace;
@@ -46,6 +46,18 @@ th, td {
     opacity: 1;
     visibility: visible;
 }
+
+.diagonal-stripes {
+  background: repeating-linear-gradient(
+    -30deg,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+</style>
+<style>
 
 .roll {
     color: #ffff00
@@ -143,10 +155,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Шэдоуболтик</span></div>
 <div class="cursor-popup">
+<div>
+Одеяние Ползучих песков</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Фантастика</td>
@@ -158,11 +172,11 @@ function toggle_popup() {
 58<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Шэдоуболтик</td>
@@ -174,8 +188,8 @@ function toggle_popup() {
 72<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -217,10 +231,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Фантастика</span></div>
 <div class="cursor-popup">
+<div>
+Фолиант Чародейских снарядов VIII</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Друидудома</td>
@@ -232,11 +248,11 @@ function toggle_popup() {
 66<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Ультимас</td>
@@ -248,11 +264,11 @@ function toggle_popup() {
 6<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Фантастика</td>
@@ -264,8 +280,8 @@ function toggle_popup() {
 84<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -283,10 +299,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Ультимас</span> (оффспек)</div>
 <div class="cursor-popup">
+<div>
+Манускрипт: Благословения мудрости VI</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Ультимас</td>
@@ -298,8 +316,8 @@ function toggle_popup() {
 33<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -317,10 +335,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Горнимир</span></div>
 <div class="cursor-popup">
+<div>
+Киражская царская пелерина</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Шэдоуболтик</td>
@@ -332,11 +352,11 @@ function toggle_popup() {
 34<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Горнимир</td>
@@ -348,8 +368,8 @@ function toggle_popup() {
 73<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -377,10 +397,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Шэдоуболтик</span></div>
 <div class="cursor-popup">
+<div>
+Формула чар для перчаток: сила огня</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Цунами</td>
@@ -392,11 +414,11 @@ function toggle_popup() {
 37<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Шэдоуболтик</td>
@@ -408,8 +430,8 @@ function toggle_popup() {
 95<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -437,10 +459,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Горнимир</span></div>
 <div class="cursor-popup">
+<div>
+Фолиант Огненного шара XII</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Друидудома</td>
@@ -452,11 +476,11 @@ function toggle_popup() {
 3<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Фантастика</td>
@@ -468,11 +492,11 @@ function toggle_popup() {
 31<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Ультимас</td>
@@ -484,11 +508,11 @@ function toggle_popup() {
 77<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 4</td>
 <td>
 Горнимир</td>
@@ -500,11 +524,11 @@ function toggle_popup() {
 76<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 5</td>
 <td>
 Сейлормун</td>
@@ -516,11 +540,11 @@ function toggle_popup() {
 36<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 6</td>
 <td>
 Чоко</td>
@@ -532,11 +556,11 @@ function toggle_popup() {
 32<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 7</td>
 <td>
 Чоко</td>
@@ -548,7 +572,7 @@ function toggle_popup() {
 38<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 </tbody>
@@ -567,10 +591,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Перун</span></div>
 <div class="cursor-popup">
+<div>
+Учебник Боевого клича VII</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Перун</td>
@@ -582,11 +608,11 @@ function toggle_popup() {
 77<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Чоко</td>
@@ -598,11 +624,11 @@ function toggle_popup() {
 94<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Цунами</td>
@@ -614,11 +640,11 @@ function toggle_popup() {
 93<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 4</td>
 <td>
 Фёст</td>
@@ -630,7 +656,7 @@ function toggle_popup() {
 41<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 </tbody>
@@ -685,10 +711,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Чарджа</span> (оффспек)</div>
 <div class="cursor-popup">
+<div>
+Киражская шипастая рукоять</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Чарджа</td>
@@ -700,8 +728,8 @@ function toggle_popup() {
 32<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -719,10 +747,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Шэдоуболтик</span></div>
 <div class="cursor-popup">
+<div>
+Киражская изысканная рукоять</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Фантастика</td>
@@ -734,11 +764,11 @@ function toggle_popup() {
 49<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Шэдоуболтик</td>
@@ -750,11 +780,11 @@ function toggle_popup() {
 97<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Песньлуны</td>
@@ -766,11 +796,11 @@ function toggle_popup() {
 31<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 4</td>
 <td>
 Дары</td>
@@ -782,7 +812,7 @@ function toggle_popup() {
 69<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 </tbody>
@@ -801,10 +831,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Перун</span></div>
 <div class="cursor-popup">
+<div>
+Ножные латы Сокрушителя</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Перун</td>
@@ -816,8 +848,8 @@ function toggle_popup() {
 85<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -835,10 +867,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Шэдоуболтик</span></div>
 <div class="cursor-popup">
+<div>
+Оплечье Маз-Надира</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Фантастика</td>
@@ -850,11 +884,11 @@ function toggle_popup() {
 74<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Шэдоуболтик</td>
@@ -866,11 +900,11 @@ function toggle_popup() {
 93<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Хилхелп</td>
@@ -882,7 +916,7 @@ function toggle_popup() {
 65<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 </tbody>
@@ -901,10 +935,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Ультимас</span> (оффспек)</div>
 <div class="cursor-popup">
+<div>
+Книга Смертельного яда V</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Идрисс</td>
@@ -916,11 +952,11 @@ function toggle_popup() {
 4<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Перун</td>
@@ -932,11 +968,11 @@ function toggle_popup() {
 9<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Чарджа</td>
@@ -948,11 +984,11 @@ function toggle_popup() {
 8<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 4</td>
 <td>
 Ультимас</td>
@@ -964,8 +1000,8 @@ function toggle_popup() {
 75<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -983,10 +1019,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Ультимас</span> (оффспек)</div>
 <div class="cursor-popup">
+<div>
+Книга Ложного выпада V</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Идрисс</td>
@@ -998,11 +1036,11 @@ function toggle_popup() {
 53<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Ультимас</td>
@@ -1014,11 +1052,11 @@ function toggle_popup() {
 60<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 3</td>
 <td>
 Чарджа</td>
@@ -1030,7 +1068,7 @@ function toggle_popup() {
 36<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 </tbody>
@@ -1061,10 +1099,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span></div>
 <div class="cursor-popup">
+<div>
+Киражская изысканная рукоять</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Песньлуны</td>
@@ -1076,8 +1116,8 @@ function toggle_popup() {
 67<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -1095,10 +1135,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Шэдоуболтик</span></div>
 <div class="cursor-popup">
+<div>
+Посох Руин</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Шэдоуболтик</td>
@@ -1110,11 +1152,11 @@ function toggle_popup() {
 2<td>
 (1-100)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 <tr style="">
-<td>
+<td style="text-align: right;">
 2</td>
 <td>
 Хилхелп</td>
@@ -1126,7 +1168,7 @@ function toggle_popup() {
 39<td>
 (1-100)</td>
 </td>
-<td>
+<td style="color: #00ffff;">
 </td>
 </tr>
 </tbody>
@@ -1157,10 +1199,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span> (оффспек)</div>
 <div class="cursor-popup">
+<div>
+Кодекс Большего исцеления V</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Чоко</td>
@@ -1172,8 +1216,8 @@ function toggle_popup() {
 47<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -1191,10 +1235,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span> (оффспек)</div>
 <div class="cursor-popup">
+<div>
+Манускрипт: Благословения мудрости VI</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Чоко</td>
@@ -1206,8 +1252,8 @@ function toggle_popup() {
 33<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -1225,10 +1271,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span> (оффспек)</div>
 <div class="cursor-popup">
+<div>
+Манускрипт: Благословение могущества VI</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Чоко</td>
@@ -1240,8 +1288,8 @@ function toggle_popup() {
 36<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -1291,10 +1339,12 @@ function toggle_popup() {
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span> (оффспек)</div>
 <div class="cursor-popup">
+<div>
+Манускрипт: Благодать IX</div>
 <table class="roll">
 <tbody>
 <tr style="">
-<td>
+<td style="text-align: right;">
 1</td>
 <td>
 Чоко</td>
@@ -1306,8 +1356,8 @@ function toggle_popup() {
 76<td style="text-align: right;">
 (1-99)</td>
 </td>
-<td>
-</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
 </tr>
 </tbody>
 </table>
@@ -1316,5 +1366,8 @@ function toggle_popup() {
 </tr>
 </tbody>
 </table>
+<br />
+<div>
+Главный лутожор рейда - <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Чоко</span> с 6 предметами.</div>
 </body>
 </html>
