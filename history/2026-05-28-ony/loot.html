@@ -29,7 +29,7 @@ th, td {
     background: #ffffff;
     color: white;
     padding: 8px 16px;
-    border-radius: 40px;
+    border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
     font-family: monospace;
@@ -46,6 +46,18 @@ th, td {
     opacity: 1;
     visibility: visible;
 }
+
+.diagonal-stripes {
+  background: repeating-linear-gradient(
+    -30deg,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+</style>
+<style>
 
 .roll {
     color: #ffff00
@@ -154,140 +166,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-68<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Инисса</td>
-<td>
-жрец</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-50<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Солано</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-24<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-4</td>
-<td>
-Тотошка</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-77<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-5</td>
-<td>
-Сталиум</td>
-<td>
-жрец</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-35<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-6</td>
-<td>
-Перун</td>
-<td>
-паладин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-50<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-7</td>
-<td>
-Анихилятор</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-23<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="color: #ff0000;">
-<td>
-8</td>
-<td>
-Тотошка</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-10<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -312,28 +190,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-37<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -358,60 +214,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_rogue.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ccc12b; ">Роршах</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Роршах</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-50<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Тотошка</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-39<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Чоко</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-6<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -424,172 +226,6 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Бгх</span> (резерв)</div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Маджестик</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-36<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Солано</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-91<td style="text-align: right;">
-(1-99)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Фрмаг</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-3<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-4</td>
-<td>
-Мириам</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-63<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-5</td>
-<td>
-Вива</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-9<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-6</td>
-<td>
-Тотошка</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-1<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-7</td>
-<td>
-Идрисс</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-26<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-8</td>
-<td>
-Бгх</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-87<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-9</td>
-<td>
-Ультимас</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-78<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-10</td>
-<td>
-Антейка</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-37<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 </td>
 </tr>
 <tr>
@@ -602,239 +238,12 @@ function toggle_popup() {
 <td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
 <div>
 <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Фрмаг</span></div>
-<div class="cursor-popup">
-<table class="roll">
-<tbody>
-<tr style="">
-<td>
-1</td>
-<td>
-Вива</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-17<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-2</td>
-<td>
-Песньлуны</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-83<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-3</td>
-<td>
-Фрмаг</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-99<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-4</td>
-<td>
-Маджестик</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-5<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-5</td>
-<td>
-Цунами</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-82<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-6</td>
-<td>
-Идрисс</td>
-<td>
-друид</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-95<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-7</td>
-<td>
-Антейка</td>
-<td>
-чернокнижник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-41<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-8</td>
-<td>
-Хилхелп</td>
-<td>
-жрец</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-69<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-9</td>
-<td>
-Перун</td>
-<td>
-паладин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-7<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-10</td>
-<td>
-Тровгар</td>
-<td>
-паладин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-1<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-11</td>
-<td>
-Чоко</td>
-<td>
-разбойник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-38<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-12</td>
-<td>
-Горнимир</td>
-<td>
-охотник</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-60<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-13</td>
-<td>
-Сагя</td>
-<td>
-маг</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-67<td>
-(1-100)</td>
-</td>
-<td>
-</td>
-</tr>
-<tr style="">
-<td>
-14</td>
-<td>
-Ультимас</td>
-<td>
-воин</td>
-<td>
-выбрасывает</td>
-<td style="text-align: right;">
-73<td>
-(1-100)</td>
-</td>
-<td>
 </td>
 </tr>
 </tbody>
 </table>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
+<br />
+<div>
+Главный лутожор рейда - <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Песньлуны</span> с 2 предметами.</div>
 </body>
 </html>
