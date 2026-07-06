@@ -132,6 +132,13 @@ function toggle_popup() {
     }
 }
 </script>
+<script>
+
+function copy_to_clipboard(e) {
+    var text = document.getElementById(e).innerHTML;
+    navigator.clipboard.writeText(text);
+}
+</script>
 </head>
 <body>
 <h3>
@@ -144,5 +151,9 @@ function toggle_popup() {
 Обновления</h4>
 <div>
 23.06.26 Создана страница правил.</div>
+<div>
+05.07.26 Добавлена возможность резервов на вторичную специализацию Легатам с множителем 0.5.</div>
+<div>
+05.07.26 Добавлена возможность резервов на Талисман Драконьего клыка охотникам с множителем 0.5.</div>
 </body>
 </html>

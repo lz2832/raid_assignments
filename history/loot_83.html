@@ -132,6 +132,13 @@ function toggle_popup() {
     }
 }
 </script>
+<script>
+
+function copy_to_clipboard(e) {
+    var text = document.getElementById(e).innerHTML;
+    navigator.clipboard.writeText(text);
+}
+</script>
 </head>
 <body>
 <h3>
