@@ -1,0 +1,477 @@
+<html>
+<head>
+<style>
+
+table, th, td {
+    //border: 1px solid black;
+}
+
+th, td {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+</style>
+<script>
+const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};</script>
+<script src="https://wow.zamimg.com/js/tooltips.js">
+</script>
+<style>
+
+/* minimal popup that follows cursor */
+.cursor-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;   /* lets you click through */
+    z-index: 9999;
+    background: #ffffff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: monospace;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: opacity 0.12s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.cursor-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.diagonal-stripes {
+  background: repeating-linear-gradient(
+    -30deg,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+</style>
+<script>
+
+function find_popup() {
+    var e = window.event || event;
+    if (!e) {
+        return [null,null];
+    }
+    var popup = e.target || e.srcElement;
+    popup = popup.children[1];
+
+    if (!popup) {
+        popup = e.currentTarget;
+        popup = popup.children[1];
+        if (!popup) {
+            return [null,null];
+        }
+    }
+    return [e,popup];
+}
+function update_position() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    update_position1(e, popup);
+
+    // make popup visible on first movement
+    popup.classList.add('active');
+}
+function update_position1(e, popup) {
+    const offsetX = 18;
+    const offsetY = 20;
+
+    let left = e.clientX + offsetX;
+    let top = e.clientY + offsetY;
+
+    // keep popup inside window edges
+    const popupRect = popup.getBoundingClientRect();
+    const width = popup.offsetWidth;
+    const height = popup.offsetHeight;
+
+    if (left + width > window.innerWidth - 8) {
+        left = window.innerWidth - width - 8;
+    }
+    if (left < 8) left = 8;
+    if (top + height > window.innerHeight - 8) {
+        top = window.innerHeight - height - 8;
+    }
+    if (top < 8) top = 8;
+
+    popup.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+}
+function hide_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.remove('active');
+}
+function toggle_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    if (popup.classList.contains('active')) {
+        popup.classList.remove('active');
+    } else {
+        update_position1(e, popup);
+        popup.classList.add('active');
+    }
+}
+</script>
+<script>
+
+function copy_to_clipboard(e) {
+    var text = document.getElementById(e).innerHTML;
+    navigator.clipboard.writeText(text);
+}
+</script>
+</head>
+<body>
+<h3>
+<a href="index.html">История рейдов</a> - История добычи - <a href="points.html">Очки резерва</a> - <a href="rules.html">Правила</a> - <a href="bank.html">Банк</a> - <a href="addons.html">Аддоны (Модификации)</a> - <a href="wa.html">Weak Auras</a> - <a href="classes.html">Классы</a> - <a href="macros.html">Макросы</a> - <a href="contacts.html">Контакты и соцсети</a> </h3>
+<h4>
+Элаха</h4>
+<table>
+<tbody>
+<tr>
+<td style="text-align: right;">
+1</td>
+<td>
+2026-07-05 22:03:26</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19723" data-wowhead="item=19723&domain=ru.classic">Изначальная рубашка Хаккари</a></td>
+<td>
+2026-07-05</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+2</td>
+<td>
+2026-07-03 22:15:07</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19388" data-wowhead="item=19388&domain=ru.classic">Перевязь Ангелисты</a></td>
+<td>
+2026-07-03</td>
+<td>
+Логово Крыла Тьмы</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+3</td>
+<td>
+2026-07-03 21:32:17</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16918" data-wowhead="item=16918&domain=ru.classic">Наручники ветра Пустоты</a></td>
+<td>
+2026-07-03</td>
+<td>
+Логово Крыла Тьмы</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+4</td>
+<td>
+2026-07-03 20:37:09</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19339" data-wowhead="item=19339&domain=ru.classic">Дар Стремительной Мысли</a></td>
+<td>
+2026-07-03</td>
+<td>
+Логово Крыла Тьмы</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+5</td>
+<td>
+2026-06-30 21:51:27</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20885" data-wowhead="item=20885&domain=ru.classic">Киражская воинская пелерина</a></td>
+<td>
+2026-06-30</td>
+<td>
+Руины Ан'Киража</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+6</td>
+<td>
+2026-06-29 21:57:14</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19927" data-wowhead="item=19927&domain=ru.classic">Касание Мар-ли</a></td>
+<td>
+2026-06-29</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+7</td>
+<td>
+2026-06-28 22:16:42</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=22711" data-wowhead="item=22711&domain=ru.classic">Плащ приверженца Хаккари</a></td>
+<td>
+2026-06-28</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+8</td>
+<td>
+2026-06-27 22:43:40</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=21214" data-wowhead="item=21214&domain=ru.classic">Фолиант Ледяной стрелы XI</a></td>
+<td>
+2026-06-27</td>
+<td>
+Руины Ан'Киража</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+9</td>
+<td>
+2026-06-27 22:30:33</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=21452" data-wowhead="item=21452&domain=ru.classic">Посох Руин</a></td>
+<td>
+2026-06-27</td>
+<td>
+Руины Ан'Киража</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+10</td>
+<td>
+2026-06-26 22:37:21</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16916" data-wowhead="item=16916&domain=ru.classic">Одеяния ветра Пустоты</a></td>
+<td>
+2026-06-26</td>
+<td>
+Логово Крыла Тьмы</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+11</td>
+<td>
+2026-06-26 21:57:28</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16818" data-wowhead="item=16818&domain=ru.classic">Пояс ветра Пустоты</a></td>
+<td>
+2026-06-26</td>
+<td>
+Логово Крыла Тьмы</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+12</td>
+<td>
+2026-06-25 22:38:02</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=21483" data-wowhead="item=21483&domain=ru.classic">Кольцо Ветров пустыни</a></td>
+<td>
+2026-06-25</td>
+<td>
+Руины Ан'Киража</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+13</td>
+<td>
+2026-06-25 22:37:18</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=21280" data-wowhead="item=21280&domain=ru.classic">Фолиант Чародейских снарядов VIII</a></td>
+<td>
+2026-06-25</td>
+<td>
+Руины Ан'Киража</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+14</td>
+<td>
+2026-06-25 22:19:45</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=21281" data-wowhead="item=21281&domain=ru.classic">Гримуар стрелы Тьмы</a></td>
+<td>
+2026-06-25</td>
+<td>
+Руины Ан'Киража</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+15</td>
+<td>
+2026-06-25 22:02:36</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20884" data-wowhead="item=20884&domain=ru.classic">Киражское кольцо власти</a></td>
+<td>
+2026-06-25</td>
+<td>
+Руины Ан'Киража</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+16</td>
+<td>
+2026-06-10 21:39:51</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16915" data-wowhead="item=16915&domain=ru.classic">Штаны ветра Пустоты</a></td>
+<td>
+2026-06-10</td>
+<td>
+Огненные Недра</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+17</td>
+<td>
+2026-06-10 21:39:19</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=18814" data-wowhead="item=18814&domain=ru.classic">Колье Повелителя Огня</a></td>
+<td>
+2026-06-10</td>
+<td>
+Огненные Недра</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+18</td>
+<td>
+2026-06-06 22:54:08</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19864" data-wowhead="item=19864&domain=ru.classic">Кровавый зов</a></td>
+<td>
+2026-06-06</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+19</td>
+<td>
+2026-06-06 22:10:55</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19727" data-wowhead="item=19727&domain=ru.classic">Кровокос</a></td>
+<td>
+2026-06-06</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+20</td>
+<td>
+2026-06-06 21:47:51</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19721" data-wowhead="item=19721&domain=ru.classic">Изначальная лацерна Хаккари</a></td>
+<td>
+2026-06-06</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+21</td>
+<td>
+2026-06-05 21:09:55</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16913" data-wowhead="item=16913&domain=ru.classic">Перчатки ветра Пустоты</a></td>
+<td>
+2026-06-05</td>
+<td>
+Логово Крыла Тьмы</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+22</td>
+<td>
+2026-06-05 20:54:17</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16912" data-wowhead="item=16912&domain=ru.classic">Сапоги ветра Пустоты</a></td>
+<td>
+2026-06-05</td>
+<td>
+Логово Крыла Тьмы</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+23</td>
+<td>
+2026-06-03 20:36:15</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16799" data-wowhead="item=16799&domain=ru.classic">Наручники чародея</a></td>
+<td>
+2026-06-03</td>
+<td>
+Огненные Недра</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+24</td>
+<td>
+2026-06-02 22:07:41</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19721" data-wowhead="item=19721&domain=ru.classic">Изначальная лацерна Хаккари</a></td>
+<td>
+2026-06-02</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+25</td>
+<td>
+2026-06-01 21:51:09</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=18811" data-wowhead="item=18811&domain=ru.classic">Плащ защиты от огня</a></td>
+<td>
+2026-06-01</td>
+<td>
+Огненные Недра</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+26</td>
+<td>
+2026-06-01 20:42:30</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16802" data-wowhead="item=16802&domain=ru.classic">Пояс чародея</a></td>
+<td>
+2026-06-01</td>
+<td>
+Огненные Недра</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+27</td>
+<td>
+2026-05-30 21:51:34</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=22716" data-wowhead="item=22716&domain=ru.classic">Пояс Неиспользованной Силы</a></td>
+<td>
+2026-05-30</td>
+<td>
+Зул'Гуруб</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
