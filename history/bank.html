@@ -139,6 +139,72 @@ function copy_to_clipboard(e) {
     navigator.clipboard.writeText(text);
 }
 </script>
+<script>
+
+function sortTable(id, n, is_num) {
+    // ↑ ↓ - for header
+
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById(id);
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+
+      if (is_num) {
+        x = Number(x.innerHTML)
+        y = Number(y.innerHTML)
+      } else {
+        x = x.firstElementChild.innerHTML.toLowerCase()
+        y = y.firstElementChild.innerHTML.toLowerCase()
+      }
+
+      if (dir == "asc") {
+        if (x > y) {
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x < y) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
 </head>
 <body>
 <h3>
@@ -146,7 +212,7 @@ function copy_to_clipboard(e) {
 <h4>
 1. Фёст (наручи и пояса из набора комплектов 1 (т1) из рейда Огненные Недра)</h4>
 <div>
-Обновлено: 2026-07-15 22:30</div>
+Обновлено: 2026-07-16 00:24</div>
 <br />
 <table>
 <thead>
@@ -189,7 +255,7 @@ function copy_to_clipboard(e) {
 <h4>
 2. Фёст (книги из рейда Руины Ан'Киража)</h4>
 <div>
-Обновлено: 2026-07-15 22:30</div>
+Обновлено: 2026-07-16 00:24</div>
 <br />
 <table>
 <thead>
@@ -344,7 +410,7 @@ function copy_to_clipboard(e) {
 <h4>
 3. Фёст (классовые книги)</h4>
 <div>
-Обновлено: 2026-07-15 22:30</div>
+Обновлено: 2026-07-16 00:24</div>
 <br />
 <table>
 <thead>
