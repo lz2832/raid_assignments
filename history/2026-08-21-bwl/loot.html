@@ -1,0 +1,2071 @@
+<html>
+<head>
+<script>
+const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};</script>
+<script src="https://wow.zamimg.com/js/tooltips.js">
+</script>
+<style>
+
+table, th, td {
+    //border: 1px solid black;
+}
+
+th, td {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+</style>
+<style>
+
+/* minimal popup that follows cursor */
+.cursor-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;   /* lets you click through */
+    z-index: 9999;
+    background: #ffffff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: monospace;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: opacity 0.12s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.cursor-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.diagonal-stripes {
+  background: repeating-linear-gradient(
+    -30deg,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+</style>
+<style>
+
+.roll {
+    color: #ffff00
+}
+</style>
+<script>
+
+function find_popup() {
+    var e = window.event || event;
+    if (!e) {
+        return [null,null];
+    }
+    var popup = e.target || e.srcElement;
+    popup = popup.children[1];
+
+    if (!popup) {
+        popup = e.currentTarget;
+        popup = popup.children[1];
+        if (!popup) {
+            return [null,null];
+        }
+    }
+    return [e,popup];
+}
+function update_position() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    update_position1(e, popup);
+
+    // make popup visible on first movement
+    popup.classList.add('active');
+}
+function update_position1(e, popup) {
+    const offsetX = 18;
+    const offsetY = 20;
+
+    let left = e.clientX + offsetX;
+    let top = e.clientY + offsetY;
+
+    // keep popup inside window edges
+    const popupRect = popup.getBoundingClientRect();
+    const width = popup.offsetWidth;
+    const height = popup.offsetHeight;
+
+    if (left + width > window.innerWidth - 8) {
+        left = window.innerWidth - width - 8;
+    }
+    if (left < 8) left = 8;
+    if (top + height > window.innerHeight - 8) {
+        top = window.innerHeight - height - 8;
+    }
+    if (top < 8) top = 8;
+
+    popup.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+}
+function hide_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.remove('active');
+}
+function toggle_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    if (popup.classList.contains('active')) {
+        popup.classList.remove('active');
+    } else {
+        update_position1(e, popup);
+        popup.classList.add('active');
+    }
+}
+</script>
+</head>
+<body>
+<h3>
+Добыча Логово Крыла Тьмы 2026-08-21 <a href="../index.html">Назад</a></h3>
+<table>
+<tbody>
+<tr>
+<td style="text-align: right;">
+1</td>
+<td>
+21:33:14</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19337" data-wowhead="item=19337&domain=ru.classic">Черная книга</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Локкин</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19337" data-wowhead="item=19337&domain=ru.classic">Черная книга</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Розенбаум</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+49<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Элара</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+22<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+3</td>
+<td>
+Локкин</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+95<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+2</td>
+<td>
+21:34:05</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16959" data-wowhead="item=16959&domain=ru.classic">Браслеты гнева</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Братик</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16959" data-wowhead="item=16959&domain=ru.classic">Браслеты гнева</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Братик</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+85<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+3</td>
+<td>
+21:34:27</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16904" data-wowhead="item=16904&domain=ru.classic">Наручи Ярости Бури</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Колпак</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16904" data-wowhead="item=16904&domain=ru.classic">Наручи Ярости Бури</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Колпак</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+8<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Ракель</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+1<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+4</td>
+<td>
+21:41:29</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16933" data-wowhead="item=16933&domain=ru.classic">Пояс возмездия</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Розенбаум</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16933" data-wowhead="item=16933&domain=ru.classic">Пояс возмездия</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Розенбаум</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+62<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Локкин</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+22<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Ракель</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+45<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+5</td>
+<td>
+21:41:50</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16960" data-wowhead="item=16960&domain=ru.classic">Боевой пояс гнева</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Братик</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16960" data-wowhead="item=16960&domain=ru.classic">Боевой пояс гнева</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Братик</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+65<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+6</td>
+<td>
+21:42:23</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19372" data-wowhead="item=19372&domain=ru.classic">Шлем Бесконечной ярости</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Алтынай</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19372" data-wowhead="item=19372&domain=ru.classic">Шлем Бесконечной ярости</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Перун</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+90<td style="text-align: right;">
+(1-99)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Братик</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+22<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+3</td>
+<td>
+Алтынай</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+98<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+4</td>
+<td>
+Спаниелька</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+36<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+5</td>
+<td>
+Фёст</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+11<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+7</td>
+<td>
+22:13:06</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20383" data-wowhead="item=20383&domain=ru.classic">Голова предводителя драконидов Разящего Бича</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Элара</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=20383" data-wowhead="item=20383&domain=ru.classic">Голова предводителя драконидов Разящего Бича</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Локкин</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+32<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Дэпээсишка</td>
+<td>
+охотник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+30<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Горнимир</td>
+<td>
+охотник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+18<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+4</td>
+<td>
+Элара</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+100<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="color: #ff0000;">
+<td style="text-align: right;">
+5</td>
+<td>
+Элара</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+61<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+6</td>
+<td>
+Фёст</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+15<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+8</td>
+<td>
+22:13:20</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20383" data-wowhead="item=20383&domain=ru.classic">Голова предводителя драконидов Разящего Бича</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Локкин</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=20383" data-wowhead="item=20383&domain=ru.classic">Голова предводителя драконидов Разящего Бича</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Локкин</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+32<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Дэпээсишка</td>
+<td>
+охотник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+30<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Горнимир</td>
+<td>
+охотник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+18<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+4</td>
+<td>
+Элара</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+100<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #ff0000;">
+<td style="text-align: right;">
+5</td>
+<td>
+Элара</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+61<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+6</td>
+<td>
+Фёст</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+15<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+9</td>
+<td>
+22:14:30</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19374" data-wowhead="item=19374&domain=ru.classic">Наручи чародейской меткости</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Розенбаум</span> (резерв)</div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19374" data-wowhead="item=19374&domain=ru.classic">Наручи чародейской меткости</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Миниумка</td>
+<td>
+маг</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+49<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
++</td>
+<td style="text-align: right;">
+30</td>
+<td style="text-align: right;">
+очков</td>
+<td style="text-align: right;">
+=</td>
+<td style="text-align: right;">
+79</td>
+<td>
+резерв</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Розенбаум</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+60<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
++</td>
+<td style="text-align: right;">
+10</td>
+<td style="text-align: right;">
+очков</td>
+<td style="text-align: right;">
+=</td>
+<td style="text-align: right;">
+70</td>
+<td>
+резерв</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Элара</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+64<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+4</td>
+<td>
+Локкин</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+91<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+10</td>
+<td>
+22:31:15</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16912" data-wowhead="item=16912&domain=ru.classic">Сапоги ветра Пустоты</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Севси</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16912" data-wowhead="item=16912&domain=ru.classic">Сапоги ветра Пустоты</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Севси</td>
+<td>
+маг</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+69<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+11</td>
+<td>
+22:31:33</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16965" data-wowhead="item=16965&domain=ru.classic">Башмаки гнева</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Братик</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16965" data-wowhead="item=16965&domain=ru.classic">Башмаки гнева</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Братик</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+36<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Алтынай</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+5<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+12</td>
+<td>
+22:54:29</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19435" data-wowhead="item=19435&domain=ru.classic">Собиратель сущности</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Севси</span> (резерв)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+13</td>
+<td>
+23:14:02</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19355" data-wowhead="item=19355&domain=ru.classic">Фокусирующий посох Крыла тени</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Биар</span> (резерв)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+14</td>
+<td>
+23:18:20</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19432" data-wowhead="item=19432&domain=ru.classic">Обруч Примененной силы</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Каваи</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19432" data-wowhead="item=19432&domain=ru.classic">Обруч Примененной силы</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Каваи</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+91<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Элара</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+45<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Ракель</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+57<td style="text-align: right;">
+(1-99)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+4</td>
+<td>
+Биар</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+81<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+5</td>
+<td>
+Мэтью</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+81<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+6</td>
+<td>
+Перун</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+73<td style="text-align: right;">
+(1-99)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+15</td>
+<td>
+23:18:50</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16940" data-wowhead="item=16940&domain=ru.classic">Рукавицы охотника на драконов</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_hunter.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#abd473; ">Горнимир</span> (резерв)</div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16940" data-wowhead="item=16940&domain=ru.classic">Рукавицы охотника на драконов</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Горнимир</td>
+<td>
+охотник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+93<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
++</td>
+<td style="text-align: right;">
+30</td>
+<td style="text-align: right;">
+очков</td>
+<td style="text-align: right;">
+=</td>
+<td style="text-align: right;">
+123</td>
+<td>
+резерв</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Цунами</td>
+<td>
+охотник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+9<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Дэпээсишка</td>
+<td>
+охотник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+63<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
++</td>
+<td style="text-align: right;">
+10</td>
+<td style="text-align: right;">
+очков</td>
+<td style="text-align: right;">
+=</td>
+<td style="text-align: right;">
+73</td>
+<td>
+резерв</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+4</td>
+<td>
+Вива</td>
+<td>
+охотник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+36<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+16</td>
+<td>
+23:34:11</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16902" data-wowhead="item=16902&domain=ru.classic">Наплечье Ярости Бури</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_druid.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#ff7d0a; ">Колпак</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16902" data-wowhead="item=16902&domain=ru.classic">Наплечье Ярости Бури</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Колпак</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+44<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Биар</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+3<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Ракель</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+27<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+17</td>
+<td>
+23:34:59</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19385" data-wowhead="item=19385&domain=ru.classic">Наделенные силой поножи</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Палычпал</span> (резерв)</div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19385" data-wowhead="item=19385&domain=ru.classic">Наделенные силой поножи</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Ракель</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+11<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
++</td>
+<td style="text-align: right;">
+110</td>
+<td style="text-align: right;">
+очков</td>
+<td style="text-align: right;">
+=</td>
+<td style="text-align: right;">
+121</td>
+<td>
+резерв</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+2</td>
+<td>
+Палычпал</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+77<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
++</td>
+<td style="text-align: right;">
+60</td>
+<td style="text-align: right;">
+очков</td>
+<td style="text-align: right;">
+=</td>
+<td style="text-align: right;">
+137</td>
+<td>
+резерв</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Биар</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+48<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+4</td>
+<td>
+Мантигон</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+96<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
++</td>
+<td style="text-align: right;">
+10</td>
+<td style="text-align: right;">
+очков</td>
+<td style="text-align: right;">
+=</td>
+<td style="text-align: right;">
+106</td>
+<td>
+резерв</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+5</td>
+<td>
+Мэтью</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+89<td>
+(1-100)</td>
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td style="text-align: right;">
+</td>
+<td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+18</td>
+<td>
+23:44:31</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19407" data-wowhead="item=19407&domain=ru.classic">Перчатки Пламени слоновой кости</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Розенбаум</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19407" data-wowhead="item=19407&domain=ru.classic">Перчатки Пламени слоновой кости</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Локкин</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+57<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+2</td>
+<td>
+Розенбаум</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+62<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+19</td>
+<td>
+00:06:57</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19438" data-wowhead="item=19438&domain=ru.classic">Сапоги снежной бури Ринго</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Севси</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19438" data-wowhead="item=19438&domain=ru.classic">Сапоги снежной бури Ринго</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Палычпал</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+18<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+2</td>
+<td>
+Севси</td>
+<td>
+маг</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+85<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+20</td>
+<td>
+00:07:03</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19003" data-wowhead="item=19003&domain=ru.classic">Голова Нефариана</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; ">Аскл</span> (резерв)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+21</td>
+<td>
+00:07:07</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19356" data-wowhead="item=19356&domain=ru.classic">Посох Темного пламени</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warlock.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#9482c9; ">Локкин</span> (резерв)</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+22</td>
+<td>
+00:07:33</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16961" data-wowhead="item=16961&domain=ru.classic">Наплечье гнева</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Братик</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16961" data-wowhead="item=16961&domain=ru.classic">Наплечье гнева</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Братик</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+52<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+23</td>
+<td>
+00:07:54</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19402" data-wowhead="item=19402&domain=ru.classic">Набедренники Павшего Брата</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Перун</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19402" data-wowhead="item=19402&domain=ru.classic">Набедренники Павшего Брата</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Перун</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+41<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Мантигон</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+19<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Мэтью</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+20<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+24</td>
+<td>
+00:08:14</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16956" data-wowhead="item=16956&domain=ru.classic">Рукавицы правосудия</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_paladin.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#f58cba; ">Мэтью</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16956" data-wowhead="item=16956&domain=ru.classic">Рукавицы правосудия</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Мантигон</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+9<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+2</td>
+<td>
+Мэтью</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+33<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+25</td>
+<td>
+00:08:47</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19386" data-wowhead="item=19386&domain=ru.classic">Элементиевый плащ</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Алтынай</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19386" data-wowhead="item=19386&domain=ru.classic">Элементиевый плащ</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Ракель</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+64<td style="text-align: right;">
+(1-99)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Мантигон</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+53<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+3</td>
+<td>
+Алтынай</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+56<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+4</td>
+<td>
+Биар</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+4<td style="text-align: right;">
+(1-99)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+5</td>
+<td>
+Братик</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+57<td style="text-align: right;">
+(1-99)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+26</td>
+<td>
+00:09:08</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19378" data-wowhead="item=19378&domain=ru.classic">Плащ Мрачного лорда</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Севси</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=19378" data-wowhead="item=19378&domain=ru.classic">Плащ Мрачного лорда</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Биар</td>
+<td>
+друид</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+69<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+2</td>
+<td>
+Мантигон</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+35<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+3</td>
+<td>
+Элара</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+83<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+4</td>
+<td>
+Мэтью</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+41<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+5</td>
+<td>
+Спаниелька</td>
+<td>
+паладин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+47<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+6</td>
+<td>
+Севси</td>
+<td>
+маг</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+85<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+<tr style="">
+<td style="text-align: right;">
+7</td>
+<td>
+Розенбаум</td>
+<td>
+чернокнижник</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+93<td style="text-align: right;">
+(1-99)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+27</td>
+<td>
+00:09:30</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16923" data-wowhead="item=16923&domain=ru.classic">Одеяния превосходства</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_priest.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#0; ">Претресе</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16923" data-wowhead="item=16923&domain=ru.classic">Одеяния превосходства</a></div>
+<table class="roll">
+<tbody>
+<tr style="">
+<td style="text-align: right;">
+1</td>
+<td>
+Аскл</td>
+<td>
+жрец</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+26<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+</td>
+</tr>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+2</td>
+<td>
+Претресе</td>
+<td>
+жрец</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+43<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+28</td>
+<td>
+00:09:55</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16966" data-wowhead="item=16966&domain=ru.classic">Кираса гнева</a></td>
+<td ontouchstart="update_position()" ontouchmove="update_position()" onmouseover="update_position()" onpointerover="update_position()" onclick="toggle_popup()" onmousemove="update_position()" onmouseleave="hide_popup()">
+<div>
+<img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Алтынай</span></div>
+<div class="cursor-popup">
+<div>
+<a href="https://www.wowhead.com/classic/ru/item=16966" data-wowhead="item=16966&domain=ru.classic">Кираса гнева</a></div>
+<table class="roll">
+<tbody>
+<tr style="color: #00ff00;">
+<td style="text-align: right;">
+1</td>
+<td>
+Алтынай</td>
+<td>
+воин</td>
+<td>
+выбрасывает</td>
+<td style="text-align: right;">
+10<td>
+(1-100)</td>
+</td>
+<td style="color: #00ffff;">
+поздравляем!</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<br />
+<div>
+Главная лутожорочка рейда - <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_warrior.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#c79c6e; ">Братик</span> с 4 предметами.</div>
+<div>
+Главная лутожорочка рейда - <img src="https://wow.zamimg.com/images/wow/icons/small/classicon_mage.jpg" style="width: 14px; height: 14px; padding-bottom: 3px; vertical-align: middle;"> <span style="color:#69ccf0; ">Севси</span> с 4 предметами.</div>
+</body>
+</html>
