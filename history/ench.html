@@ -1,0 +1,444 @@
+<html>
+<head>
+<style>
+
+table, th, td {
+    //border: 1px solid black;
+}
+
+th, td {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+</style>
+<script>
+const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};</script>
+<script src="https://wow.zamimg.com/js/tooltips.js">
+</script>
+<style>
+
+/* minimal popup that follows cursor */
+.cursor-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;   /* lets you click through */
+    z-index: 9999;
+    background: #ffffff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: monospace;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: opacity 0.12s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.cursor-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.diagonal-stripes {
+  background: repeating-linear-gradient(
+    -30deg,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+</style>
+<script>
+
+function find_popup() {
+    var e = window.event || event;
+    if (!e) {
+        return [null,null];
+    }
+    var popup = e.target || e.srcElement;
+    popup = popup.children[1];
+
+    if (!popup) {
+        popup = e.currentTarget;
+        popup = popup.children[1];
+        if (!popup) {
+            return [null,null];
+        }
+    }
+    return [e,popup];
+}
+function update_position() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    update_position1(e, popup);
+
+    // make popup visible on first movement
+    popup.classList.add('active');
+}
+function update_position1(e, popup) {
+    const offsetX = 18;
+    const offsetY = 20;
+
+    let left = e.clientX + offsetX;
+    let top = e.clientY + offsetY;
+
+    // keep popup inside window edges
+    const popupRect = popup.getBoundingClientRect();
+    const width = popup.offsetWidth;
+    const height = popup.offsetHeight;
+
+    if (left + width > window.innerWidth - 8) {
+        left = window.innerWidth - width - 8;
+    }
+    if (left < 8) left = 8;
+    if (top + height > window.innerHeight - 8) {
+        top = window.innerHeight - height - 8;
+    }
+    if (top < 8) top = 8;
+
+    popup.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+}
+function hide_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.remove('active');
+}
+function toggle_popup() {
+    var [e,popup] = find_popup();
+    if (!popup) {
+        return;
+    }
+
+    if (popup.classList.contains('active')) {
+        popup.classList.remove('active');
+    } else {
+        update_position1(e, popup);
+        popup.classList.add('active');
+    }
+}
+</script>
+<script>
+
+function copy_to_clipboard(e) {
+    var text = document.getElementById(e).innerHTML;
+    navigator.clipboard.writeText(text);
+}
+</script>
+<script>
+
+function sortTable(id, n, is_num) {
+    // ↑ ↓ - for header
+
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById(id);
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+
+      if (is_num) {
+        x = Number(x.innerHTML)
+        y = Number(y.innerHTML)
+      } else {
+        x = x.firstElementChild.innerHTML.toLowerCase()
+        y = y.firstElementChild.innerHTML.toLowerCase()
+      }
+
+      if (dir == "asc") {
+        if (x > y) {
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x < y) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+<h3>
+<a href="index.html">История рейдов</a> - <a href="loot.html">История добычи</a> - <a href="points.html">Очки резерва</a> - <a href="rules.html">Правила</a> - <a href="attendance.html">Посещаемость</a> - <a href="epgp.html">История CEPGP</a> - <a href="bank.html">Банк</a> - <a href="addons.html">Аддоны (Модификации)</a> - <a href="wa.html">Weak Auras</a> - <a href="classes.html">Классы</a> - Зачарования - <a href="macros.html">Макросы</a> - <a href="contacts.html">Контакты и соцсети</a> </h3>
+<h3>
+Необходимые зачарования для рейдов</h3>
+<div>
+На проходные вещи из рейдов можно вешать топ-2 чарки, не тратьтесь на дорогие.</div>
+<br />
+<div>
+На слабые вещи после прокачки или из 5ппл можно повесить слабые чарки.</div>
+<br />
+<div>
+На бис вещи - бис чарки.</div>
+<br />
+<div>
+Оружие часто чарим бис чаркой (см. табл.).</div>
+<br />
+<div>
+Весь т2 жрецов - бис чарки.</div>
+<br />
+<table>
+<tbody>
+<tr>
+<td style="text-align: right;">
+1</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=14154" data-wowhead="item=14154&domain=ru.classic">Одеяние истинной веры</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16253" data-wowhead="item=16253&domain=ru.classic">Формула чар для нагрудника: все характеристики IV</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+2</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16923" data-wowhead="item=16923&domain=ru.classic">Одеяния превосходства</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16253" data-wowhead="item=16253&domain=ru.classic">Формула чар для нагрудника: все характеристики IV</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+3</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16920" data-wowhead="item=16920&domain=ru.classic">Боевые рукавицы превосходства</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20730" data-wowhead="item=20730&domain=ru.classic">Формула чар для перчаток: целительная сила</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+4</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16926" data-wowhead="item=16926&domain=ru.classic">Наручники превосходства</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19447" data-wowhead="item=19447&domain=ru.classic">Формула чар для браслетов: лечение</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+5</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20264" data-wowhead="item=20264&domain=ru.classic">Рукавицы Мирохранителя</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=20730" data-wowhead="item=20730&domain=ru.classic">Формула чар для перчаток: целительная сила</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+6</td>
+<td>
+жрецы ботинки</td>
+<td>
+бег (предпочтительно) или +5 духа</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+7</td>
+<td>
+друиды, паладины ботинки</td>
+<td>
+скорость бега</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+8</td>
+<td>
+маги, чернокнижники ботинки</td>
+<td>
+скорость бега</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+9</td>
+<td>
+фури воины ботинки</td>
+<td>
+скорость бега или 7 ловкости (на бис)</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+10</td>
+<td>
+разбойники ботинки</td>
+<td>
+скорость бега или 7 ловкости</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+11</td>
+<td>
+охотники ботинки</td>
+<td>
+скорость бега или 7 ловкости</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+12</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=18608" data-wowhead="item=18608&domain=ru.classic">Благодарение</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=18260" data-wowhead="item=18260&domain=ru.classic">Формула чар для оружия: целительная сила</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+13</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19890" data-wowhead="item=19890&domain=ru.classic">Проклятие Джин'до</a> и лучше (больше 50 бх с оружия)</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=18260" data-wowhead="item=18260&domain=ru.classic">Формула чар для оружия: целительная сила</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+14</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=21452" data-wowhead="item=21452&domain=ru.classic">Посох Руин</a> и лучше (больше 60 силы заклинаний с оружия или суммы левой и правой руки)</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=18259" data-wowhead="item=18259&domain=ru.classic">Формула чар для оружия: сила заклинаний I</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+15</td>
+<td>
+воинам и разбойникам мечникам</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+16</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19866" data-wowhead="item=19866&domain=ru.classic">Боевой клинок Хаккари</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16252" data-wowhead="item=16252&domain=ru.classic">Формула чар для оружия: рыцарь</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+17</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19865" data-wowhead="item=19865&domain=ru.classic">Боевой клинок Хаккари</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16252" data-wowhead="item=16252&domain=ru.classic">Формула чар для оружия: рыцарь</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+18</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=18832" data-wowhead="item=18832&domain=ru.classic">Клинок жестокости</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16252" data-wowhead="item=16252&domain=ru.classic">Формула чар для оружия: рыцарь</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+19</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19351" data-wowhead="item=19351&domain=ru.classic">Маладат, рунический клинок Черного полета</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16252" data-wowhead="item=16252&domain=ru.classic">Формула чар для оружия: рыцарь</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+20</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19352" data-wowhead="item=19352&domain=ru.classic">Закаленный меч с разноцветным отливом</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16252" data-wowhead="item=16252&domain=ru.classic">Формула чар для оружия: рыцарь</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;">
+21</td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=19363" data-wowhead="item=19363&domain=ru.classic">Грул-шорук, лезвие Хаоса</a></td>
+<td>
+<a href="https://www.wowhead.com/classic/ru/item=16252" data-wowhead="item=16252&domain=ru.classic">Формула чар для оружия: рыцарь</a></td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
